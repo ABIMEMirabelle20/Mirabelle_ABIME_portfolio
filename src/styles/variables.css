@@ -1,0 +1,135 @@
+/* =====================================================================
+   VARIABLES DU SITE
+   ===================================================================== */
+
+:root {
+  /* ===== Couleurs — thème sombre ===== */
+
+  --color-bg: #0B0A10;
+  --color-bg-elevated: #131119;
+  --color-bg-darker: #060509;
+
+  --color-surface: #17141F;
+  --color-surface-2: #1D1926;
+
+  --color-white: #FFFFFF;
+
+  --color-text: #F5F3F8;
+  --color-text-soft: #ACA5B8;
+  --color-text-faint: #706A80;
+
+  --color-primary: #2F6BFF;
+  --color-secondary: #8B3DFF;
+  --color-accent: #00D4FF;
+
+  --color-line: rgba(255, 255, 255, 0.10);
+  --color-line-soft: rgba(255, 255, 255, 0.05);
+
+  --primary-rgb: 47, 107, 255;
+  --secondary-rgb: 139, 61, 255;
+  --accent-rgb: 0, 212, 255;
+
+  --glow-primary: rgba(var(--primary-rgb), 0.4);
+  --glow-secondary: rgba(var(--secondary-rgb), 0.4);
+  --glow-accent: rgba(var(--accent-rgb), 0.4);
+
+  --shadow-color: 0, 0, 0;
+
+  /* ===== Typographie ===== */
+
+  --font-display: 'Bricolage Grotesque', 'Georgia', sans-serif;
+  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-mono: 'JetBrains Mono', Consolas, monospace;
+
+  --fs-hero: clamp(3rem, 8vw, 7.5rem);
+  --fs-h1: clamp(2.25rem, 5vw, 4rem);
+  --fs-h2: clamp(1.75rem, 3.5vw, 2.75rem);
+  --fs-h3: clamp(1.25rem, 2vw, 1.6rem);
+
+  --fs-body-lg: clamp(1.05rem, 1.4vw, 1.25rem);
+  --fs-body: 1rem;
+  --fs-small: 0.85rem;
+  --fs-micro: 0.72rem;
+
+  /* ===== Espacement ===== */
+
+  --space-section: clamp(5rem, 12vw, 10rem);
+  --space-xl: 4rem;
+  --space-lg: 2.5rem;
+  --space-md: 1.5rem;
+  --space-sm: 1rem;
+  --space-xs: 0.5rem;
+
+  /*
+    IMPORTANT :
+    min() ne doit pas créer une largeur supérieure au conteneur parent.
+  */
+  --container-w: min(1240px, 92vw);
+
+  /* ===== Animations ===== */
+
+  --ease-organic: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-soft: cubic-bezier(0.4, 0, 0.2, 1);
+
+  --dur-fast: 0.3s;
+  --dur-med: 0.6s;
+  --dur-slow: 1.1s;
+
+  /* ===== Bordures ===== */
+
+  --radius-sm: 4px;
+  --radius-md: 14px;
+  --radius-lg: 26px;
+
+  --radius-blob:
+    42% 58% 64% 36% /
+    46% 40% 60% 54%;
+}
+
+
+/* =====================================================================
+   THÈME CLAIR
+   ===================================================================== */
+
+[data-theme='light'] {
+
+  --color-bg: #FAF8F6;
+  --color-bg-elevated: #F2EEE9;
+  --color-bg-darker: #EDE7DF;
+
+  --color-surface: #FFFFFF;
+  --color-surface-2: #F5F1EA;
+
+  --color-white: #FFFFFF;
+
+  --color-text: #1C1A22;
+  --color-text-soft: #514B58;
+  --color-text-faint: #8A8391;
+
+  --color-primary: #1652E0;
+  --color-secondary: #6D28D9;
+  --color-accent: #0086A8;
+
+  --color-line: rgba(20, 16, 30, 0.12);
+  --color-line-soft: rgba(20, 16, 30, 0.06);
+
+  --primary-rgb: 22, 82, 224;
+  --secondary-rgb: 109, 40, 217;
+  --accent-rgb: 0, 134, 168;
+
+  --shadow-color: 40, 30, 20;
+}
+
+
+/* =====================================================================
+   ACCESSIBILITÉ
+   ===================================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+
+  :root {
+    --dur-fast: 0.01ms;
+    --dur-med: 0.01ms;
+    --dur-slow: 0.01ms;
+  }
+}

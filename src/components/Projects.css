@@ -1,0 +1,521 @@
+/* =====================================================================
+   PROJECTS
+   Galerie horizontale UNIQUE (PC + mobile + tablette). Chaque carte a une
+   hauteur naturelle (pas de 100vh/overflow:hidden) : rien ne peut se
+   retrouver invisible/coupé, quelle que soit la taille de l'écran.
+   ===================================================================== */
+
+.projects {
+  --p-primary: var(--color-primary);
+  --p-secondary: var(--color-secondary);
+  --p-accent: var(--color-accent);
+
+  position: relative;
+  z-index: 1;
+
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+}
+
+
+/* =====================================================================
+   HEADER
+   ===================================================================== */
+
+.projects__head {
+  min-width: 0;
+  margin-bottom: var(--space-xl);
+}
+
+.projects__lead {
+  max-width: 56ch;
+  margin-top: var(--space-md);
+
+  color: var(--color-text-soft);
+  font-size: var(--fs-body-lg);
+}
+
+
+/* =====================================================================
+   GALERIE
+   ===================================================================== */
+
+.projects__gallery {
+  position: relative;
+
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+}
+
+.projects__track {
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+
+  display: flex;
+  align-items: stretch;
+
+  gap: clamp(1.1rem, 2.6vw, 1.8rem);
+
+  overflow-x: auto;
+  overflow-y: hidden;
+
+  scroll-snap-type: x proximity;
+  scroll-padding-inline: clamp(1rem, 5vw, 3rem);
+
+  padding-inline: clamp(1rem, 5vw, 3rem);
+  padding-block: 0.6rem 1.4rem;
+
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  -webkit-overflow-scrolling: touch;
+
+  overscroll-behavior-x: contain;
+
+  cursor: grab;
+}
+
+.projects__track:active,
+.projects__track.is-dragging {
+  cursor: grabbing;
+}
+
+.projects__track::-webkit-scrollbar {
+  display: none;
+}
+
+.projects__track:focus-visible {
+  outline: 2px solid var(--color-text);
+  outline-offset: -2px;
+  border-radius: var(--radius-lg);
+}
+
+.projects__track-spacer {
+  flex: 0 0 1px;
+}
+
+
+/* =====================================================================
+   CARTE PROJET
+   ===================================================================== */
+
+.projects__card {
+  --card-a: var(--p-primary);
+  --card-b: var(--p-secondary);
+
+  flex: 0 0 auto;
+
+  width: clamp(260px, 82vw, 340px);
+
+  display: flex;
+  flex-direction: column;
+
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+
+  border: 1px solid var(--color-line);
+  background: var(--color-surface);
+
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+
+  box-shadow: 0 24px 46px -30px rgba(var(--shadow-color), 0.6);
+
+  transition:
+    transform 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.35s var(--ease-soft),
+    border-color 0.35s var(--ease-soft);
+}
+
+.projects__card:hover,
+.projects__card:focus-within {
+  transform: translateY(-8px);
+
+  border-color: color-mix(in srgb, var(--card-a) 40%, var(--color-line));
+
+  box-shadow:
+    0 34px 60px -28px rgba(var(--shadow-color), 0.7),
+    0 0 0 1px color-mix(in srgb, var(--card-a) 25%, transparent);
+}
+
+@media (min-width: 640px) {
+  .projects__card {
+    width: clamp(300px, 44vw, 380px);
+  }
+}
+
+@media (min-width: 1024px) {
+  .projects__card {
+    width: clamp(320px, 27vw, 400px);
+  }
+}
+
+
+/* ---------- Média (image / bandeau type "fenêtre") ---------- */
+
+.projects__card-media {
+  position: relative;
+  flex: 0 0 auto;
+}
+
+.projects__card-media-bar {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+
+  padding: 0.7rem 0.9rem;
+
+  background: var(--color-surface-2);
+  border-bottom: 1px solid var(--color-line);
+}
+
+.projects__card-media-bar span:not(.projects__card-index) {
+  flex: 0 0 auto;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--color-line);
+}
+
+.projects__card-index {
+  margin-left: auto;
+
+  font-family: var(--font-mono);
+  font-size: var(--fs-micro);
+  letter-spacing: 0.06em;
+  color: var(--color-text-faint);
+}
+
+.projects__card-media-body {
+  position: relative;
+
+  width: 100%;
+  aspect-ratio: 16 / 10;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  overflow: hidden;
+
+  background: linear-gradient(135deg, var(--card-a), var(--card-b));
+}
+
+.projects__card-media-body img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+
+  object-fit: cover;
+
+  transition: transform 0.6s var(--ease-organic);
+}
+
+.projects__card:hover .projects__card-media-body img {
+  transform: scale(1.06);
+}
+
+.projects__card-monogram {
+  font-family: var(--font-display);
+  font-size: 4rem;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.92);
+}
+
+.projects__card-year {
+  position: absolute;
+  right: 0.7rem;
+  bottom: 0.7rem;
+
+  padding: 0.3rem 0.65rem;
+  border-radius: 999px;
+
+  font-family: var(--font-mono);
+  font-size: var(--fs-micro);
+  letter-spacing: 0.04em;
+  color: #fff;
+
+  background: rgba(10, 8, 16, 0.45);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+}
+
+
+/* ---------- Corps texte ---------- */
+
+.projects__card-body {
+  display: flex;
+  flex-direction: column;
+
+  flex: 1 1 auto;
+  min-width: 0;
+
+  padding: 1.3rem 1.4rem 1.5rem;
+}
+
+.projects__card-tagline {
+  font-family: var(--font-mono);
+  font-size: var(--fs-micro);
+  letter-spacing: 0.04em;
+
+  color: var(--card-a);
+
+  overflow-wrap: anywhere;
+}
+
+.projects__card-title {
+  margin-top: 0.35rem;
+
+  font-size: clamp(1.25rem, 2.6vw, 1.5rem);
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+
+  overflow-wrap: anywhere;
+}
+
+.projects__card-desc {
+  margin-top: 0.6rem;
+
+  font-size: var(--fs-small);
+  line-height: 1.55;
+  color: var(--color-text-soft);
+
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+
+/* ---------- Technologies ---------- */
+
+.projects__card-stack {
+  width: 100%;
+  min-width: 0;
+
+  margin-top: auto;
+  padding-top: var(--space-md);
+
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.tech-icon {
+  flex: 0 0 auto;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 28px;
+  height: 28px;
+
+  border-radius: 8px;
+
+  background: var(--color-surface-2);
+  border: 1px solid var(--color-line);
+
+  color: var(--tech-color, var(--color-text-soft));
+
+  font-size: 1rem;
+
+  transition:
+    transform var(--dur-fast) var(--ease-organic),
+    border-color var(--dur-fast) var(--ease-soft);
+}
+
+.tech-icon:hover {
+  transform: translateY(-2px) scale(1.08);
+
+  border-color: color-mix(in srgb, var(--tech-color, var(--p-primary)) 45%, var(--color-line));
+}
+
+.tech-icon--fallback {
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.02em;
+  color: var(--color-text-faint);
+}
+
+
+/* ---------- Actions ---------- */
+
+.projects__card-actions {
+  width: 100%;
+  max-width: 100%;
+
+  margin-top: var(--space-md);
+
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+  flex-wrap: wrap;
+}
+
+.projects__link {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+
+  max-width: 100%;
+
+  font-size: var(--fs-small);
+  font-weight: 500;
+  color: var(--color-text-soft);
+
+  transition:
+    color var(--dur-fast) var(--ease-soft),
+    gap var(--dur-fast) var(--ease-soft);
+
+  overflow-wrap: anywhere;
+}
+
+.projects__link:hover {
+  color: var(--color-text);
+  gap: 8px;
+}
+
+.projects__link--primary {
+  color: var(--card-a);
+}
+
+.projects__link--primary:hover {
+  color: var(--p-accent);
+}
+
+.projects__link svg {
+  flex: 0 0 auto;
+  transition: transform var(--dur-fast) var(--ease-soft);
+}
+
+.projects__link--primary:hover svg {
+  transform: translateX(3px);
+}
+
+
+/* =====================================================================
+   FLÈCHES DE NAVIGATION
+   ===================================================================== */
+
+.projects__nav {
+  position: absolute;
+  top: 40%;
+  transform: translateY(-50%);
+  z-index: 4;
+
+  width: 44px;
+  height: 44px;
+  flex: 0 0 auto;
+
+  border-radius: 50%;
+
+  border: 1px solid var(--color-line);
+  background: var(--color-surface);
+  color: var(--color-text);
+
+  font-size: 1.1rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  box-shadow: 0 12px 26px -14px rgba(var(--shadow-color), 0.6);
+
+  transition:
+    border-color var(--dur-fast) var(--ease-soft),
+    transform var(--dur-fast) var(--ease-organic),
+    opacity var(--dur-fast);
+}
+
+.projects__nav:hover:not(:disabled) {
+  border-color: var(--p-primary);
+  transform: translateY(-50%) scale(1.08);
+}
+
+.projects__nav:disabled {
+  opacity: 0.3;
+  cursor: default;
+}
+
+.projects__nav--prev {
+  left: clamp(-6px, 1vw, 0.5rem);
+}
+
+.projects__nav--next {
+  right: clamp(-6px, 1vw, 0.5rem);
+}
+
+/* Sur écran tactile pur (pas de souris), le swipe suffit : on masque les
+   flèches pour ne pas gêner le contenu des cartes. */
+@media (hover: none) and (pointer: coarse) {
+  .projects__nav {
+    display: none;
+  }
+}
+
+@media (max-width: 640px) {
+  .projects__nav {
+    width: 38px;
+    height: 38px;
+    font-size: 0.95rem;
+  }
+}
+
+
+/* =====================================================================
+   DOTS
+   ===================================================================== */
+
+.projects__dots {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+
+  margin-top: var(--space-lg);
+}
+
+.projects__dot {
+  width: 7px;
+  height: 7px;
+  flex: 0 0 auto;
+
+  border-radius: 50%;
+  border: none;
+  padding: 0;
+
+  background: var(--color-line);
+
+  transition:
+    width var(--dur-med) var(--ease-organic),
+    background var(--dur-fast) var(--ease-soft);
+}
+
+.projects__dot.is-active {
+  width: 22px;
+  border-radius: 999px;
+  background: var(--p-primary);
+}
+
+
+/* =====================================================================
+   PETITS MOBILES
+   ===================================================================== */
+
+@media (max-width: 480px) {
+  .projects__card {
+    width: min(86vw, 320px);
+  }
+
+  .projects__card-body {
+    padding: 1.1rem 1.2rem 1.3rem;
+  }
+
+  .projects__card-actions {
+    gap: 1rem;
+  }
+}

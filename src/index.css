@@ -1,0 +1,80 @@
+/* =====================================================================
+   INDEX.CSS
+   Styles globaux complémentaires uniquement.
+   
+   Les variables sont dans variables.css.
+   Le reset et les règles générales sont dans global.css.
+   ===================================================================== */
+
+html,
+body,
+#root {
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+}
+
+
+/*
+   Empêche les éléments flex/grid de provoquer un débordement
+   horizontal involontaire.
+*/
+
+main {
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+}
+
+
+/*
+   Très important pour les enfants de sections flex/grid.
+*/
+
+section,
+article,
+div {
+  min-width: 0;
+}
+
+
+/*
+   Les textes très longs ne doivent jamais imposer une largeur
+   supérieure à leur parent.
+*/
+
+h1,
+h2,
+h3,
+h4,
+p,
+span,
+a {
+  overflow-wrap: anywhere;
+}
+
+
+/*
+   Les médias restent dans leur conteneur.
+*/
+
+img,
+video,
+svg,
+canvas {
+  max-width: 100%;
+}
+
+
+/*
+   Correction mobile.
+*/
+
+@media (max-width: 700px) {
+
+  html,
+  body,
+  #root {
+    overflow-x: hidden;
+  }
+}

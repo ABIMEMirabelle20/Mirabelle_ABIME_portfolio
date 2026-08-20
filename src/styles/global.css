@@ -1,0 +1,368 @@
+@import './variables.css';
+
+
+/* =====================================================================
+   RESET
+   ===================================================================== */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+
+html {
+  width: 100%;
+  max-width: 100%;
+  margin: 0;
+  padding: 0;
+
+  /*
+    IMPORTANT :
+    `overflow-x: hidden` sur <html> ET <body> est un piège classique sur
+    Safari iOS : dès que le <body> obtient un overflow différent de
+    `visible`, il devient lui-même un conteneur de défilement, et les
+    éléments `position: fixed` (notre navbar) se retrouvent alors fixés
+    par rapport à ce conteneur plutôt que par rapport au viewport réel —
+    ils "décrochent" et défilent avec la page sur mobile. `overflow-x:
+    clip` empêche le débordement horizontal de la même façon, sans créer
+    de nouveau conteneur de scroll, donc sans casser le position: fixed.
+  */
+  overflow-x: clip;
+
+  scroll-behavior: smooth;
+}
+
+
+body {
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+
+  margin: 0;
+  padding: 0;
+
+  overflow-x: clip;
+
+  font-family: var(--font-body);
+  background: var(--color-bg);
+  color: var(--color-text);
+
+  line-height: 1.6;
+
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+
+#root {
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+
+  min-height: 100svh;
+
+  margin: 0;
+  padding: 0;
+
+  overflow-x: clip;
+
+  display: flex;
+  flex-direction: column;
+}
+
+
+/* =====================================================================
+   ÉLÉMENTS GÉNÉRAUX
+   ===================================================================== */
+
+img,
+video,
+svg,
+canvas {
+  display: block;
+
+  max-width: 100%;
+}
+
+
+img,
+video {
+  height: auto;
+}
+
+
+a {
+  color: inherit;
+  text-decoration: none;
+
+  overflow-wrap: anywhere;
+}
+
+
+button,
+input,
+textarea,
+select {
+  max-width: 100%;
+
+  font-family: inherit;
+}
+
+
+button {
+  cursor: pointer;
+
+  border: none;
+  background: none;
+  color: inherit;
+}
+
+
+h1,
+h2,
+h3,
+h4 {
+  max-width: 100%;
+  min-width: 0;
+
+  margin: 0;
+
+  font-family: var(--font-display);
+  font-weight: 500;
+
+  letter-spacing: -0.01em;
+  line-height: 1.08;
+
+  overflow-wrap: anywhere;
+}
+
+
+p {
+  max-width: 100%;
+  min-width: 0;
+
+  margin: 0;
+
+  overflow-wrap: anywhere;
+}
+
+
+::selection {
+  background: var(--color-primary);
+  color: var(--color-white);
+}
+
+
+/* =====================================================================
+   SCROLLBAR
+   ===================================================================== */
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-bg);
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(
+    var(--color-primary),
+    var(--color-secondary)
+  );
+
+  border-radius: 10px;
+
+  border: 2px solid var(--color-bg);
+}
+
+
+/* =====================================================================
+   CONTENEUR
+   ===================================================================== */
+
+.container {
+  width: var(--container-w);
+  max-width: 100%;
+  min-width: 0;
+
+  margin-inline: auto;
+}
+
+
+/* =====================================================================
+   SECTIONS
+   ===================================================================== */
+
+.section {
+  position: relative;
+  z-index: 1;
+
+  min-width: 0;
+
+  padding-block: var(--space-section);
+}
+
+
+.eyebrow {
+  display: inline-flex;
+
+  align-items: center;
+  gap: 0.6em;
+
+  max-width: 100%;
+
+  font-family: var(--font-mono);
+  font-size: var(--fs-micro);
+
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+
+  color: var(--color-text-faint);
+
+  overflow-wrap: anywhere;
+}
+
+
+.eyebrow::before {
+  content: '';
+
+  flex: 0 0 22px;
+
+  width: 22px;
+  height: 1px;
+
+  background: currentColor;
+}
+
+
+.section-head {
+  width: 100%;
+  max-width: 640px;
+  min-width: 0;
+
+  margin-bottom: var(--space-xl);
+}
+
+
+.section-head h2 {
+  margin-top: var(--space-sm);
+}
+
+
+.section-head p {
+  margin-top: var(--space-md);
+
+  color: var(--color-text-soft);
+  font-size: var(--fs-body-lg);
+}
+
+
+/* =====================================================================
+   REVEAL
+   ===================================================================== */
+
+.reveal {
+  opacity: 0;
+
+  transform: translateY(28px);
+
+  transition:
+    opacity var(--dur-slow) var(--ease-organic),
+    transform var(--dur-slow) var(--ease-organic);
+
+  will-change: transform, opacity;
+}
+
+
+.reveal.is-visible {
+  opacity: 1;
+
+  transform: translateY(0);
+}
+
+
+.reveal-delay-1 {
+  transition-delay: 0.08s;
+}
+
+.reveal-delay-2 {
+  transition-delay: 0.16s;
+}
+
+.reveal-delay-3 {
+  transition-delay: 0.24s;
+}
+
+.reveal-delay-4 {
+  transition-delay: 0.32s;
+}
+
+
+/* =====================================================================
+   FOCUS
+   ===================================================================== */
+
+:focus-visible {
+  outline: 2px solid var(--color-text);
+  outline-offset: 3px;
+
+  border-radius: 2px;
+}
+
+
+/* =====================================================================
+   MOBILE
+   ===================================================================== */
+
+@media (max-width: 700px) {
+
+  .section {
+    padding-block: clamp(3.5rem, 14vw, 5rem);
+  }
+
+  .container {
+    width: 100%;
+    max-width: 100%;
+
+    padding-inline: 18px;
+  }
+}
+
+
+@media (max-width: 480px) {
+
+  .container {
+    padding-inline: 16px;
+  }
+}
+
+
+@media (max-width: 360px) {
+
+  .container {
+    padding-inline: 12px;
+  }
+}
+
+
+/* =====================================================================
+   RÉDUCTION DES ANIMATIONS
+   ===================================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+
+  .reveal {
+    opacity: 1;
+
+    transform: none;
+
+    transition: none;
+  }
+
+  html {
+    scroll-behavior: auto;
+  }
+}

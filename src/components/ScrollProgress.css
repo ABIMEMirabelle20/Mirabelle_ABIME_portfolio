@@ -1,0 +1,246 @@
+.scroll-ring {
+  position: fixed;
+  right: clamp(1.2rem, 3vw, 2.4rem);
+  bottom: clamp(1.2rem, 3vw, 2.4rem);
+  z-index: 60;
+
+  width: 68px;
+  height: 68px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 0;
+  border: 1px solid var(--color-line);
+  border-radius: 50%;
+
+  background: color-mix(
+    in srgb,
+    var(--color-surface) 82%,
+    transparent
+  );
+
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+
+  box-shadow: 0 14px 34px -16px rgba(0, 0, 0, 0.65);
+
+  opacity: 0;
+  transform: translateY(14px) scale(0.85);
+
+  /*
+   * Important :
+   * invisible = aucun événement souris/touch
+   */
+  pointer-events: none;
+
+  cursor: pointer;
+
+  transition:
+    opacity var(--dur-med) var(--ease-organic),
+    transform var(--dur-med) var(--ease-organic),
+    box-shadow var(--dur-fast) var(--ease-soft),
+    border-color var(--dur-fast) var(--ease-soft);
+}
+
+/* Bouton visible après 120px de scroll */
+.scroll-ring.is-visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  pointer-events: auto;
+}
+
+/* Hover / clavier */
+.scroll-ring:hover,
+.scroll-ring:focus-visible {
+  border-color: var(--color-primary);
+  box-shadow:
+    0 18px 42px -14px var(--glow-primary);
+  transform: translateY(-3px) scale(1.06);
+}
+
+.scroll-ring:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 4px;
+}
+
+/* SVG */
+.scroll-ring__svg {
+  position: absolute;
+  inset: 0;
+
+  width: 100%;
+  height: 100%;
+
+  transform: rotate(-90deg);
+  transform-origin: center;
+
+  transition: transform var(--dur-med) var(--ease-organic);
+
+  /*
+   * Le SVG ne doit jamais intercepter les événements.
+   * Le bouton parent reste responsable du clic.
+   */
+  pointer-events: none;
+}
+
+.scroll-ring:hover .scroll-ring__svg,
+.scroll-ring:focus-visible .scroll-ring__svg {
+  transform: rotate(-82deg);
+}
+
+/* Halo */
+.scroll-ring__halo {
+  position: absolute;
+  inset: -10px;
+
+  border-radius: 50%;
+
+  background:
+    radial-gradient(
+      circle,
+      var(--glow-accent),
+      transparent 70%
+    );
+
+  opacity: 0.55;
+
+  animation:
+    scrollRingPulse 3.2s var(--ease-soft) infinite;
+
+  pointer-events: none;
+}
+
+@keyframes scrollRingPulse {
+  0%,
+  100% {
+    transform: scale(0.92);
+    opacity: 0.45;
+  }
+
+  50% {
+    transform: scale(1.08);
+    opacity: 0.7;
+  }
+}
+
+/* Cercle de fond */
+.scroll-ring__track {
+  fill: none;
+  stroke: var(--color-line);
+  stroke-width: 3;
+}
+
+/* Progression */
+.scroll-ring__value {
+  fill: none;
+  stroke: url(#scroll-ring-gradient);
+  stroke-width: 3;
+  stroke-linecap: round;
+
+  filter:
+    drop-shadow(0 0 6px var(--glow-primary));
+
+  transition:
+    stroke-dashoffset var(--dur-fast) linear;
+
+  pointer-events: none;
+}
+
+/* Contenu central */
+.scroll-ring__center {
+  position: relative;
+  z-index: 1;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  line-height: 1;
+
+  color: var(--color-text);
+
+  pointer-events: none;
+}
+
+.scroll-ring__percent {
+  font-family: var(--font-mono);
+  font-size: 0.95rem;
+
+  font-variant-numeric: tabular-nums;
+}
+
+.scroll-ring__percent::after {
+  content: '%';
+
+  margin-left: 1px;
+
+  font-size: 0.6rem;
+
+  color: var(--color-text-faint);
+}
+
+.scroll-ring__arrow {
+  margin-top: 2px;
+
+  font-size: 0.75rem;
+
+  color: var(--color-text-faint);
+
+  transition:
+    transform var(--dur-fast) var(--ease-soft);
+}
+
+.scroll-ring:hover .scroll-ring__arrow,
+.scroll-ring:focus-visible .scroll-ring__arrow {
+  transform: translateY(-2px);
+}
+
+/* Réduction des animations */
+@media (prefers-reduced-motion: reduce) {
+  .scroll-ring {
+    transition: opacity var(--dur-fast) linear;
+    transform: none !important;
+  }
+
+  .scroll-ring__halo {
+    animation: none;
+  }
+
+  .scroll-ring__svg {
+    transition: none;
+  }
+
+  .scroll-ring:hover .scroll-ring__svg,
+  .scroll-ring:focus-visible .scroll-ring__svg {
+    transform: rotate(-90deg);
+  }
+
+  .scroll-ring__value {
+    transition: none;
+  }
+}
+
+/* Mobile */
+@media (max-width: 640px) {
+  .scroll-ring {
+    right: 1rem;
+    bottom: 1rem;
+
+    width: 56px;
+    height: 56px;
+  }
+
+  .scroll-ring__percent {
+    font-size: 0.8rem;
+  }
+
+  .scroll-ring__arrow {
+    font-size: 0.65rem;
+  }
+
+  .scroll-ring__halo {
+    inset: -7px;
+  }
+}
