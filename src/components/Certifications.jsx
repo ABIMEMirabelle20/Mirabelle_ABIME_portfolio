@@ -55,7 +55,7 @@ function useCountUp(target, { duration = 1600 } = {}) {
   return [value, nodeRef];
 }
 
-function StatBlock({ target, label, delay }) {
+function StatBlock({ target, label, note, delay }) {
   const [value, ref] = useCountUp(target);
 
   return (
@@ -69,6 +69,7 @@ function StatBlock({ target, label, delay }) {
     >
       <span className="certifications__stat-number">{value.toLocaleString('fr-FR')}</span>
       <span className="certifications__stat-label">{label}</span>
+      {note && <p className="certifications__stat-note">{note}</p>}
     </motion.div>
   );
 }
@@ -84,13 +85,16 @@ export default function Certifications() {
       <div className="container certifications__inner">
         <div className="section-head reveal">
           <p className="eyebrow">{t.certifications.eyebrow}</p>
-          <h2>{t.certifications.title}</h2>
-          <p>{t.certifications.note}</p>
         </div>
 
         <div className="certifications__showcase">
           <StatBlock target={linesOfCode} label={t.certifications.linesLabel} delay={0} />
-          <StatBlock target={totalCertifications} label={t.certifications.countLabel} delay={0.1} />
+          <StatBlock
+            target={totalCertifications}
+            label={t.certifications.countLabel}
+            note={t.certifications.note}
+            delay={0.1}
+          />
           <StatBlock target={yearsCoding} label={t.certifications.yearsLabel} delay={0.2} />
         </div>
 

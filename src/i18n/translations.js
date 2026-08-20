@@ -60,9 +60,8 @@ export const translations = {
       svgLabel: 'Coupe de tronc représentant mon parcours, année par année',
     },
     certifications: {
-      eyebrow: 'Certifications obtenues cette année',
-      title: 'Apprendre, valider, progresser.',
-      note: 'Obtenues via Coursera (Mtn Skills Academy) et en autoformation continue.',
+      eyebrow: 'Formation continue',
+      note: 'Obtenues cette année, via Coursera (Mtn Skills Academy) et en autoformation continue.',
       countLabel: 'certifications',
       linesLabel: 'lignes de code écrites',
       yearsLabel: 'années à coder, jour après jour',
@@ -175,9 +174,8 @@ text: 'Une exploration continue des nouvelles technologies web, des tendances fr
       svgLabel: 'Tree-ring cross-section representing my journey, year by year',
     },
     certifications: {
-      eyebrow: 'Certifications',
-      title: 'Learn, validate, progress.',
-      note: 'Earned via Coursera (Mtn Skills Academy) and continuous self-study.',
+      eyebrow: 'Continuous learning',
+      note: 'Earned this year, via Coursera (Mtn Skills Academy) and continuous self-study.',
       countLabel: 'certifications',
       linesLabel: 'lines of code written',
       yearsLabel: 'years coding, day after day',

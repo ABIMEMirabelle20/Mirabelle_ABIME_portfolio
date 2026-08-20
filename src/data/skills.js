@@ -87,7 +87,7 @@ export const skillBranches = [
       {
         id: 'vite',
         name: 'Vite / Webpack',
-        level: 30,
+        level: 40,
         desc: { fr: 'Bundling, optimisation, environnement de build', en: 'Bundling, optimisation, build environment' },
         pos: { x: 132, y: 406 },
       },
@@ -112,7 +112,7 @@ export const skillBranches = [
       {
         id: 'node',
         name: 'Node.js & API',
-        level: 30,
+        level: 40,
         desc: { fr: 'Consommation et création d’API REST', en: 'Consuming and building REST APIs' },
         pos: { x: 866, y: 396 },
       },
@@ -126,7 +126,7 @@ export const skillBranches = [
       {
         id: 'tests',
         name: 'Tests (Jest)',
-        level: 20,
+        level: 30,
         desc: { fr: 'Tests unitaires et fiabilité du code', en: 'Unit tests and code reliability' },
         pos: { x: 762, y: 296 },
       },
