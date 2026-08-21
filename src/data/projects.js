@@ -1,6 +1,11 @@
 // tagline/description sont bilingues ({ fr, en }) pour suivre la langue
 // active du site. title, stack et liens restent identiques dans les deux langues.
+
 import smartCalculatorImg from '../assets/projects/smart-calculator.jpg.png';
+import WeatherApp from '../assets/projects/weather.jpg.png';
+import numera from '../assets/projects/numera.jpg.png';
+import niceCréation from '../assets/projects/nice_création.jpg.png';
+
 const projects = [
   {
     id: 'perso-1',
@@ -16,116 +21,71 @@ const projects = [
     year: '2025 · 2026',
     stack: ['Html', 'CSS', 'JS'],
     gradient: ['#2F6BFF', '#00D4FF'],
-   image: smartCalculatorImg,
+    image: smartCalculatorImg,
     github: 'https://github.com/ABIMEMirabelle20/Calculatrice_JS.git',
     demo: 'https://abimemirabelle20.github.io/Calculatrice_JS/',
   },
+
   {
     id: 'perso-2',
-    title: 'Loomi — Générateur de palettes',
-    tagline: { fr: "L'harmonie des couleurs, en un clic.", en: 'Colour harmony, in one click.' },
-    description: {
-      fr: "Outil qui génère des palettes accessibles (contraste AA/AAA) à partir d'une image ou d'une couleur de base, avec export CSS instantané.",
-      en: 'A tool that generates accessible palettes (AA/AAA contrast) from an image or a base colour, with instant CSS export.',
+    title: 'Weather_app',
+    tagline: {
+      fr: 'La météo prend vie en 3D, en temps réel.',
+      en: 'Weather comes alive in 3D, in real time.',
     },
-    year: '2025',
-    stack: ['JavaScript', 'Canvas API', 'CSS3'],
-    gradient: ['#8B3DFF', '#2F6BFF'],
-    image: '',
-    github: 'https://github.com/ABIMEMirabelle20/loomi-palette',
-    demo: '#',
-  },
-  {
-    id: 'perso-3',
-    title: "Thread — Suivi d'habitudes",
-    tagline: { fr: 'Chaque jour compte, chaque fil se tisse.', en: 'Every day counts, every thread weaves.' },
     description: {
-      fr: 'Tracker d\'habitudes avec vue calendrier tissée, séries (streaks) animées et rappels configurables.',
-      en: 'A habit tracker with a woven calendar view, animated streaks and configurable reminders.',
-    },
-    year: '2025',
-    stack: ['React', 'Firebase', 'Framer Motion'],
-    gradient: ['#00D4FF', '#8B3DFF'],
-    image: '',
-    github: 'https://github.com/ABIMEMirabelle20/thread-habits',
-    demo: '#',
-  },
-  {
-    id: 'perso-4',
-    title: 'Stitch Lab',
-    tagline: { fr: 'Des motifs de crochet, pensés comme du code.', en: 'Crochet patterns, designed like code.' },
-    description: {
-      fr: "Générateur visuel de grilles de patrons crochet : on compose des rangs, l'app calcule la quantité de laine et  exporte le patron en PDF.",
-      en: 'A visual crochet-pattern grid builder: compose rows, the app calculates yarn quantity and exports the pattern as a PDF.',
+      fr: "Application météo React couplée à une scène 3D (react-three-fiber) qui réagit aux conditions réelles : soleil animé par ciel clair, nuages qui dérivent, pluie ou neige qui tombent selon la météo du moment. Géolocalisation automatique, prévisions horaires et journalières, sans clé API.",
+      en: 'A React weather app paired with a live 3D scene (react-three-fiber) that reacts to real conditions: an animated sun on clear skies, drifting clouds, falling rain or snow depending on the weather. Automatic geolocation, hourly and daily forecasts, no API key required.',
     },
     year: '2026',
-    stack: ['React', 'Node.js', 'PDFKit'],
-    gradient: ['#2F6BFF', '#8B3DFF'],
-    image: '',
-    github: 'https://github.com/ABIMEMirabelle20/stitch-lab',
-    demo: '#',
+    stack: ['React', 'Three.js', 'React Three Fiber', 'Vite'],
+    gradient: ['#2F6BFF', '#38BDF8'],
+    image: WeatherApp,
+    github: 'https://github.com/ABIMEMirabelle20/weather_app',
+    demo: 'https://weatherapp-indol-nine.vercel.app/',
   },
 
   {
-    id: 'pro-1',
-    title: 'Nice Crochet — Site vitrine',
-    tagline: { fr: "L'artisanat, présenté avec exigence.", en: 'Craftsmanship, presented with rigour.' },
+    id: 'perso-3',
+    title: 'Numera — Jeu de devinette',
+    tagline: {
+      fr: 'Plus vous approchez, plus ça chauffe.',
+      en: 'The closer you get, the hotter it gets.',
+    },
     description: {
-      fr: 'Site vitrine pour une marque de crochet artisanal : collections limitées, commandes sur-mesure et parcours de formation en ligne.',
-      en: 'A showcase site for a handmade crochet brand: limited collections, made-to-order pieces and an online training path.',
+      fr: "Mini-jeu de devinette avec un radar de proximité animé (du cyan froid à l'or brûlant), 4 niveaux de difficulté, sons générés via Web Audio API et score persistant en local.",
+      en: 'A number-guessing game with an animated proximity radar (cold cyan to hot gold), 4 difficulty levels, sounds generated via the Web Audio API, and a locally persisted score.',
+    },
+    year: '2026',
+    stack: ['React', 'Vite', 'Web Audio API', 'CSS3'],
+    gradient: ['#00D4FF', '#F5A623'],
+    image: numera,
+    github: 'https://github.com/ABIMEMirabelle20/number-guess-game',
+    demo: 'https://number-guess-game-green-sigma.vercel.app/',
+  },
+
+ 
+
+  {
+     id: 'pro-1',
+    title: 'Nice Crochet — Site vitrine',
+    tagline: {
+      fr: 'Chaque maille a son mot à dire.',
+      en: 'Every stitch has something to say.',
+    },
+    description: {
+      fr: "Site vitrine conçu pour une marque de crochet artisanal, où chaque collection raconte une histoire : pièces en édition limitée, commandes sur-mesure suivies pas à pas, et un parcours de formation en ligne pensé pour transmettre le geste, pas seulement le vendre.",
+      en: 'A showcase site built for a handmade crochet brand, where every collection tells a story: limited-edition pieces, made-to-order commissions tracked step by step, and an online training path designed to pass on the craft, not just sell it.',
     },
     year: '2026',
     stack: ['React', 'Node.js', 'Tailwind CSS'],
     gradient: ['#8B3DFF', '#00D4FF'],
-    image: '',
-    github: 'https://github.com/ABIMEMirabelle20/nice-crochet',
-    demo: '#',
+    image: niceCréation,
+    github: 'https://github.com/ABIMEMirabelle20/Site_Nice_Crochet.git',
+    demo: 'https://site-nice-crochet.vercel.app/',
   },
-  {
-    id: 'pro-2',
-    title: 'Fleet — Dashboard logistique',
-    tagline: { fr: "Piloter une flotte, en un coup d'œil.", en: 'Fleet management, at a glance.' },
-    description: {
-      fr: 'Tableau de bord temps réel pour le suivi de livraisons : cartographie interactive, alertes de retard et export de rapports.',
-      en: 'A real-time dashboard for delivery tracking: interactive maps, delay alerts and report exports.',
-    },
-    year: '2025',
-    stack: ['React', 'TypeScript', 'PostgreSQL'],
-    gradient: ['#00D4FF', '#2F6BFF'],
-    image: '',
-    github: 'https://github.com/ABIMEMirabelle20/fleet-dashboard',
-    demo: '#',
-  },
-  {
-    id: 'pro-3',
-    title: 'Marketa — Plateforme e-commerce',
-    tagline: { fr: 'Vendre en ligne, sans friction.', en: 'Selling online, without friction.' },
-    description: {
-      fr: 'Plateforme e-commerce multi-vendeurs avec panier persistant, paiement sécurisé et back-office de gestion des stocks.',
-      en: 'A multi-vendor e-commerce platform with a persistent cart, secure payment and a stock-management back office.',
-    },
-    year: '2025',
-    stack: ['Next.js', 'Express', 'MongoDB'],
-    gradient: ['#2F6BFF', '#00D4FF'],
-    image: '',
-    github: 'https://github.com/ABIMEMirabelle20/marketa',
-    demo: '#',
-  },
-  {
-    id: 'pro-4',
-    title: 'Pulse CRM',
-    tagline: { fr: 'Chaque client, chaque interaction, à sa place.', en: 'Every client, every interaction, in its place.' },
-    description: {
-      fr: "CRM léger pour petites équipes commerciales : pipeline de vente drag-and-drop, rappels automatiques et rapports d'activité.",
-      en: 'A lightweight CRM for small sales teams: drag-and-drop sales pipeline, automatic reminders and activity reports.',
-    },
-    year: '2026',
-    stack: ['React', 'Firebase', 'Chart.js'],
-    gradient: ['#8B3DFF', '#2F6BFF'],
-    image: '',
-    github: 'https://github.com/ABIMEMirabelle20/pulse-crm',
-    demo: '#',
-  },
+
+  
 ];
 
 export default projects;
