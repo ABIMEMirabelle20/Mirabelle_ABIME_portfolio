@@ -3,6 +3,7 @@
   flex-direction: column;
   align-items: center;
   gap: clamp(2.5rem, 6vw, 4rem);
+  width: 100%;
 }
 
 /* ---------- Portrait ---------- */
@@ -56,7 +57,9 @@
 /* ---------- Contenu ---------- */
 .about__content {
   width: 100%;
+  max-width: 100%;
   text-align: center;
+  box-sizing: border-box;
 }
 
 .about__content h2 { margin-top: var(--space-sm); }
@@ -66,6 +69,7 @@
   max-width: 58ch;
   margin-inline: auto;
   color: var(--color-text-soft);
+  overflow-wrap: anywhere;
 }
 
 .about__text--lead {
@@ -79,8 +83,10 @@
   grid-template-columns: 1fr;
   gap: var(--space-md);
   list-style: none;
+  width: 100%;
   max-width: 420px;
   margin-inline: auto;
+  box-sizing: border-box;
 }
 
 .about__fact-card {
@@ -92,15 +98,23 @@
   border: 1px solid var(--color-line-soft);
   border-radius: var(--radius-md);
   text-align: left;
+  box-sizing: border-box;
+  width: 100%;
+  min-width: 0; /* empêche le contenu de forcer un débordement de la grille */
   transition: transform var(--dur-fast) var(--ease-organic),
               box-shadow var(--dur-fast) var(--ease-organic),
               border-color var(--dur-fast) var(--ease-soft);
 }
 
-.about__fact-card:hover {
-  transform: translateY(-3px);
-  border-color: var(--color-primary);
-  box-shadow: 0 16px 30px -18px var(--glow-primary);
+/* L'effet hover ne s'applique que sur les appareils avec une vraie souris,
+   sinon il reste "collé" après un tap sur mobile/tactile et la carte
+   semble décalée en permanence. */
+@media (hover: hover) and (pointer: fine) {
+  .about__fact-card:hover {
+    transform: translateY(-3px);
+    border-color: var(--color-primary);
+    box-shadow: 0 16px 30px -18px var(--glow-primary);
+  }
 }
 
 .about__fact-label {
@@ -109,15 +123,17 @@
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--color-text-faint);
+  overflow-wrap: anywhere;
 }
 
 .about__fact-value {
   font-family: var(--font-display);
   font-size: 1.1rem;
   color: var(--color-text);
+  overflow-wrap: anywhere;
 }
 
-/* ---------- Desktop : portrait à côté du texte (repère meganefarelle.me) ---------- */
+/* ---------- Desktop : portrait à côté du texte ---------- */
 @media (min-width: 861px) {
   .about__grid {
     flex-direction: row;
@@ -143,8 +159,17 @@
   }
 
   .about__facts {
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
     max-width: none;
+  }
+}
+
+/* Transition plus douce entre mobile et desktop : 2 colonnes dès que
+   la largeur le permet, sans attendre le saut brutal à 861px */
+@media (min-width: 560px) and (max-width: 860px) {
+  .about__facts {
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    max-width: 100%;
   }
 }
 

@@ -17,6 +17,8 @@
 .certifications__inner {
   position: relative;
   z-index: 1;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .certifications__inner .section-head {
@@ -30,6 +32,7 @@
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: clamp(1.5rem, 4vw, 3rem);
+  width: 100%;
 }
 
 /* ---------- Compteurs ---------- */
@@ -43,6 +46,8 @@
   border-radius: var(--radius-lg);
   border: 1px solid var(--color-line);
   background: color-mix(in srgb, var(--color-surface) 70%, transparent);
+  box-sizing: border-box;
+  min-width: 0;
 }
 
 .certifications__stat:nth-child(1) { border-color: color-mix(in srgb, var(--color-primary) 30%, var(--color-line)); }
@@ -66,14 +71,18 @@
   font-size: var(--fs-small);
   text-align: center;
   color: var(--color-text-faint);
+  overflow-wrap: anywhere;
 }
 
-/* ---------- Cartes de mise en valeur ---------- */
+/* ---------- Cartes de mise en valeur ("Apprentissage continu", etc.) ---------- */
 .certifications__highlights {
   margin-top: var(--space-xl);
   list-style: none;
   display: grid;
+  grid-template-columns: 1fr;
   gap: var(--space-md);
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .certifications__highlight-card {
@@ -82,15 +91,23 @@
   background: var(--color-surface);
   border: 1px solid var(--color-line-soft);
   border-radius: var(--radius-md);
+  box-sizing: border-box;
+  width: 100%;
+  min-width: 0;
   transition: transform var(--dur-fast) var(--ease-organic),
               border-color var(--dur-fast) var(--ease-soft),
               box-shadow var(--dur-fast) var(--ease-soft);
 }
 
-.certifications__highlight-card:hover {
-  transform: translateX(6px);
-  border-color: var(--color-accent);
-  box-shadow: 0 16px 32px -20px var(--glow-accent);
+/* Même correctif : le décalage vers la droite (translateX) ne doit
+   s'appliquer qu'avec une vraie souris, sinon la carte reste "collée"
+   décalée sur le côté après un tap sur mobile. */
+@media (hover: hover) and (pointer: fine) {
+  .certifications__highlight-card:hover {
+    transform: translateX(6px);
+    border-color: var(--color-accent);
+    box-shadow: 0 16px 32px -20px var(--glow-accent);
+  }
 }
 
 .certifications__highlight-index {
@@ -104,12 +121,14 @@
   margin-top: 0.4rem;
   font-size: 1.05rem;
   color: var(--color-text);
+  overflow-wrap: anywhere;
 }
 
 .certifications__highlight-card p {
   margin-top: 0.3rem;
   font-size: var(--fs-small);
   color: var(--color-text-soft);
+  overflow-wrap: anywhere;
 }
 
 @media (max-width: 780px) {
