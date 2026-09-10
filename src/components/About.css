@@ -97,10 +97,18 @@
               border-color var(--dur-fast) var(--ease-soft);
 }
 
-.about__fact-card:hover {
-  transform: translateY(-3px);
-  border-color: var(--color-primary);
-  box-shadow: 0 16px 30px -18px var(--glow-primary);
+/* Le survol (lift + bordure colorée) ne s'applique que sur les
+   appareils qui ont un vrai pointeur (souris/trackpad). Sur tactile,
+   le CSS :hover reste "collé" après un tap tant qu'on ne touche pas
+   ailleurs, ce qui fait paraître une carte décalée par rapport aux
+   autres — c'est ce qui donnait l'impression que la mise en page
+   n'était pas responsive. */
+@media (hover: hover) and (pointer: fine) {
+  .about__fact-card:hover {
+    transform: translateY(-3px);
+    border-color: var(--color-primary);
+    box-shadow: 0 16px 30px -18px var(--glow-primary);
+  }
 }
 
 .about__fact-label {

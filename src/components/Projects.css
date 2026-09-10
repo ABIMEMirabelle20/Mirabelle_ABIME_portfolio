@@ -75,6 +75,20 @@
   overscroll-behavior-x: contain;
 
   cursor: grab;
+
+  /* Profondeur 3D pour le mode coverflow (mobile). Sans effet visible
+     tant qu'aucune carte n'a de rotateY/translateZ (donc neutre sur
+     desktop). */
+  perspective: 1000px;
+}
+
+/* ---------- Mode coverflow (mobile/tablette) ---------- */
+.projects__track--coverflow {
+  scroll-snap-type: x mandatory;
+  /* Assez d'espace de part et d'autre pour que la 1ère et la dernière
+     carte puissent, elles aussi, atteindre le centre de l'écran. */
+  padding-inline: calc(50% - 140px);
+  scroll-padding-inline: calc(50% - 140px);
 }
 
 .projects__track:active,
@@ -129,7 +143,6 @@
     border-color 0.35s var(--ease-soft);
 }
 
-.projects__card:hover,
 .projects__card:focus-within {
   transform: translateY(-8px);
 
@@ -138,6 +151,32 @@
   box-shadow:
     0 34px 60px -28px rgba(var(--shadow-color), 0.7),
     0 0 0 1px color-mix(in srgb, var(--card-a) 25%, transparent);
+}
+
+/* Le lift au survol ne s'applique qu'avec un vrai pointeur (souris) :
+   sur tactile, :hover reste "collé" après un tap et une carte se
+   retrouve visuellement décalée par rapport à ses voisines. */
+@media (hover: hover) and (pointer: fine) {
+  .projects__card:hover {
+    transform: translateY(-8px);
+
+    border-color: color-mix(in srgb, var(--card-a) 40%, var(--color-line));
+
+    box-shadow:
+      0 34px 60px -28px rgba(var(--shadow-color), 0.7),
+      0 0 0 1px color-mix(in srgb, var(--card-a) 25%, transparent);
+  }
+}
+
+/* En coverflow, la rotation/l'échelle sont recalculées à chaque frame
+   de scroll en JS : la transition CSS doit rester sur l'ombre/bordure
+   uniquement, sinon la carte "traîne" derrière le doigt au lieu de le
+   suivre en direct. */
+.projects__track--coverflow .projects__card {
+  transform-style: preserve-3d;
+  will-change: transform;
+  transition: box-shadow 0.35s var(--ease-soft), border-color 0.35s var(--ease-soft);
+  scroll-snap-align: center;
 }
 
 @media (min-width: 640px) {

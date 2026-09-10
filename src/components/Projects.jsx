@@ -94,6 +94,20 @@ export default function Projects() {
   const [canNext, setCanNext] = useState(true);
   const count = projects.length;
 
+  // Sur mobile/tablette, les cartes tournent en 3D façon "coverflow"
+  // (iTunes/Photos) : la carte centrale fait face à l'écran, les
+  // voisines s'inclinent et reculent. Sur PC, la galerie reste plate —
+  // le survol à la souris/le drag suffisent déjà comme interaction.
+  const [isCoverflow, setIsCoverflow] = useState(false);
+
+  useEffect(() => {
+    const mq = window.matchMedia('(max-width: 768px)');
+    const sync = () => setIsCoverflow(mq.matches);
+    sync();
+    mq.addEventListener('change', sync);
+    return () => mq.removeEventListener('change', sync);
+  }, []);
+
   // Molette verticale -> défilement horizontal (PC/trackpad). On attache
   // l'écouteur "à la main" via addEventListener({ passive: false }) plutôt
   // que par la prop React onWheel, car React attache onWheel en mode passif
@@ -178,7 +192,9 @@ export default function Projects() {
   }, []);
 
   // Suit la position de scroll pour savoir quelle carte est "active"
-  // (pour les points) et si les flèches prev/next doivent être actives.
+  // (pour les points), si les flèches prev/next doivent être actives,
+  // et — en coverflow mobile — calcule la rotation 3D de chaque carte
+  // selon sa distance au centre de la piste.
   useEffect(() => {
     const el = trackRef.current;
     if (!el) return undefined;
@@ -187,13 +203,37 @@ export default function Projects() {
       const cards = Array.from(el.querySelectorAll('.projects__card'));
       if (!cards.length) return;
 
+      const trackRect = el.getBoundingClientRect();
+      const centerX = trackRect.left + trackRect.width / 2;
+      const halfWidth = trackRect.width / 2 || 1;
+
       let closest = 0;
-      let minDiff = Infinity;
+      let minAbsDelta = Infinity;
+
       cards.forEach((card, i) => {
-        const diff = Math.abs(card.offsetLeft - el.scrollLeft);
-        if (diff < minDiff) {
-          minDiff = diff;
+        const cardRect = card.getBoundingClientRect();
+        const cardCenter = cardRect.left + cardRect.width / 2;
+        const delta = (cardCenter - centerX) / halfWidth;
+
+        if (Math.abs(delta) < minAbsDelta) {
+          minAbsDelta = Math.abs(delta);
           closest = i;
+        }
+
+        if (isCoverflow) {
+          const clamped = Math.max(-1.6, Math.min(1.6, delta));
+          const rotateY = clamped * -30;
+          const translateZ = -Math.abs(clamped) * 70;
+          const scale = 1 - Math.min(Math.abs(clamped), 1) * 0.14;
+          const opacity = Math.max(1 - Math.min(Math.abs(clamped), 1) * 0.45, 0.4);
+
+          card.style.transform = `rotateY(${rotateY}deg) translateZ(${translateZ}px) scale(${scale})`;
+          card.style.opacity = String(opacity);
+          card.style.zIndex = String(1000 - Math.round(Math.abs(delta) * 100));
+        } else if (card.style.transform) {
+          card.style.transform = '';
+          card.style.opacity = '';
+          card.style.zIndex = '';
         }
       });
 
@@ -209,7 +249,7 @@ export default function Projects() {
       el.removeEventListener('scroll', update);
       window.removeEventListener('resize', update);
     };
-  }, []);
+  }, [isCoverflow]);
 
   const goTo = useCallback((i) => {
     const el = trackRef.current;
@@ -217,10 +257,16 @@ export default function Projects() {
     const cards = el.querySelectorAll('.projects__card');
     const clamped = Math.max(0, Math.min(count - 1, i));
     const card = cards[clamped];
-    if (card) {
-      el.scrollTo({ left: card.offsetLeft, behavior: 'smooth' });
-    }
-  }, [count]);
+    if (!card) return;
+
+    // En coverflow, on centre la carte visée dans la piste ; sinon on
+    // aligne simplement son bord gauche (comportement desktop existant).
+    const target = isCoverflow
+      ? card.offsetLeft - (el.clientWidth - card.clientWidth) / 2
+      : card.offsetLeft;
+
+    el.scrollTo({ left: target, behavior: 'smooth' });
+  }, [count, isCoverflow]);
 
   const onTrackKeyDown = (e) => {
     if (e.key === 'ArrowRight') {
@@ -252,7 +298,7 @@ export default function Projects() {
         </button>
 
         <div
-          className="projects__track"
+          className={`projects__track${isCoverflow ? ' projects__track--coverflow' : ''}`}
           ref={trackRef}
           tabIndex={0}
           role="region"
