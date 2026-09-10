@@ -5,6 +5,9 @@ import smartCalculatorImg from '../assets/projects/smart-calculator.jpg.png';
 import WeatherApp from '../assets/projects/weather.jpg.png';
 import numera from '../assets/projects/numera.jpg.png';
 import niceCréation from '../assets/projects/nice_création.jpg.png';
+import pokedex from '../assets/projects/pokedex.jpg.png';
+import personal_finance from '../assets/projects/personal_finance.jpg.png';
+
 
 const projects = [
   {
@@ -67,7 +70,7 @@ const projects = [
  
 
   {
-     id: 'pro-1',
+     id: 'perso-4',
     title: 'Nice Crochet — Site vitrine',
     tagline: {
       fr: 'Chaque maille a son mot à dire.',
@@ -78,11 +81,49 @@ const projects = [
       en: 'A showcase site built for a handmade crochet brand, where every collection tells a story: limited-edition pieces, made-to-order commissions tracked step by step, and an online training path designed to pass on the craft, not just sell it.',
     },
     year: '2026',
-    stack: ['React', 'Node.js', 'Tailwind CSS'],
+    stack: ['React', 'Vite','JS', ' CSS'],
     gradient: ['#8B3DFF', '#00D4FF'],
     image: niceCréation,
     github: 'https://github.com/ABIMEMirabelle20/Site_Nice_Crochet.git',
     demo: 'https://site-nice-crochet.vercel.app/',
+  },
+
+    {
+    id: 'perso-5',
+    title: 'Pokédex- Encyclopédie interactive des Pokémon',
+    tagline: {
+      fr: 'Attrapez-les tous… mais commencez par les trouver.',
+      en: 'Find them all… but start by finding them.',
+    },
+    description: {
+      fr: " Une expérience interactive qui transforme l’univers des Pokémon en une exploration dynamique, intuitive et ludique. Les utilisateurs peuvent rechercher des Pokémon par nom,type ou génération,découvrir leurs caractéristiques,évolutions et capacités, et meme interagir avec des animations et des effets visuels qui rendent la navigation captivante.",
+      en: 'An interactive experience that transforms the world of Pokémon into a dynamic, intuitive, and fun exploration. Users can search for Pokémon by name, type, or generation, discover their characteristics, evolutions, and abilities, and even interact with animations and visual effects that make navigation captivating.',
+    },
+    year: '2026',
+    stack: ['React', 'Vite', 'three.JS', ],
+    gradient: ['#00D4FF', '#F5A623'],
+    image: pokedex,
+    github: 'https://github.com/ABIMEMirabelle20/pokedex_game.git',
+    demo: 'https://pokedexgame-alpha.vercel.app/',
+  },
+
+   {
+    id: 'perso-6',
+    title: 'Personal Finance Manager- Gestionnaire de finances personnelles',
+    tagline: {
+      fr: 'Chaque centime compte,chque dépense a son histoire.',
+      en: 'Every penny counts,every expense has its story.',
+    },
+    description: {
+      fr: " Une application de gestion financière personnelle qui permet aux utilisateurs de suivre leurs revenus,dépenses et investissements de manière intuitive et efficace. Les utilisateurs peuvent visualiser leurs finances à travers des graphiques interactifs,définir des budgets, recevoir des alertes de dépenses et obtenir des conseils personnalisés pour améliorer leur santé financière.",
+      en: 'A personal finance management application that allows users to track their income, expenses, and investments in an intuitive and efficient manner. Users can visualize their finances through interactive charts, set budgets, receive expense alerts, and get personalized advice to improve their financial health.',
+    },
+    year: '2026',
+    stack: ['JS', 'Python', 'PostgreSQL','Pandas'],
+    gradient: ['#00D4FF', '#F5A623'],
+    image: personal_finance,
+    github: 'https://github.com/ABIMEMirabelle20/Personal_finance_manager.git',
+    demo: 'https://personal-finance-manager-weld-phi.vercel.app/',
   },
 
   
