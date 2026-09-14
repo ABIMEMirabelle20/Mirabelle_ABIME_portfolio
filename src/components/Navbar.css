@@ -7,6 +7,32 @@
   padding-block: 1.4rem;
 }
 
+/* La classe nav--scrolled était déjà posée par le JS au scroll, mais
+   n'avait aucun style associé. On ajoute un léger fond verre dépoli
+   derrière la barre une fois qu'on a quitté le tout-haut de la page —
+   ça détache proprement la nav du contenu qui défile derrière. */
+.nav::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+
+  background: color-mix(in srgb, var(--color-bg) 70%, transparent);
+  backdrop-filter: blur(18px) saturate(1.4);
+  -webkit-backdrop-filter: blur(18px) saturate(1.4);
+
+  border-bottom: 1px solid transparent;
+
+  opacity: 0;
+  transition: opacity var(--dur-med) var(--ease-soft),
+              border-color var(--dur-med) var(--ease-soft);
+}
+
+.nav--scrolled::before {
+  opacity: 1;
+  border-bottom-color: var(--color-line-soft);
+}
+
 .nav__inner {
   display: flex;
   align-items: center;
@@ -215,6 +241,18 @@
   transition: transform var(--dur-med) var(--ease-organic), opacity var(--dur-fast);
 }
 
+.nav--open .nav__toggle span:nth-child(1) {
+  transform: translateY(3px) rotate(45deg);
+}
+
+.nav--open .nav__toggle span:nth-child(2) {
+  opacity: 0;
+}
+
+.nav--open .nav__toggle span:nth-child(3) {
+  transform: translateY(-3px) rotate(-45deg);
+}
+
 .nav__mobile {
   display: none;
 }
@@ -236,9 +274,10 @@
   }
 
   .nav__menu-btn {
+    position: relative;
     display: inline-flex;
     align-items: center;
-    padding: 0.85rem 1.4rem;
+    padding: 0.85rem 1.5rem 0.85rem 3.05rem;
     border-radius: 999px;
     background: var(--color-surface);
     border: 1px solid var(--color-line);
@@ -247,6 +286,46 @@
     font-size: var(--fs-small);
     font-weight: 600;
     color: var(--color-text);
+    transition: border-color var(--dur-fast) var(--ease-soft),
+                box-shadow var(--dur-fast) var(--ease-soft),
+                transform var(--dur-fast) var(--ease-organic);
+  }
+
+  .nav__menu-btn:active {
+    transform: scale(0.96);
+  }
+
+  .nav--open .nav__menu-btn {
+    border-color: color-mix(in srgb, var(--color-primary) 40%, var(--color-line));
+  }
+
+  /* Icône "burger" à 2 barres, dessinée en pur CSS (::before/::after),
+     qui pivote en croix quand le menu est ouvert — pas de balise en
+     plus, juste du style sur le bouton déjà présent dans le JSX. */
+  .nav__menu-btn::before,
+  .nav__menu-btn::after {
+    content: '';
+    position: absolute;
+    left: 1.4rem;
+    width: 16px;
+    height: 1.5px;
+    border-radius: 2px;
+    background: currentColor;
+    transition: transform var(--dur-med) var(--ease-organic),
+                top var(--dur-med) var(--ease-organic);
+  }
+
+  .nav__menu-btn::before { top: calc(50% - 3.5px); }
+  .nav__menu-btn::after { top: calc(50% + 3.5px); }
+
+  .nav--open .nav__menu-btn::before {
+    top: 50%;
+    transform: translateY(-50%) rotate(45deg);
+  }
+
+  .nav--open .nav__menu-btn::after {
+    top: 50%;
+    transform: translateY(-50%) rotate(-45deg);
   }
 
   /* Panneau plein écran : fond 100% opaque, transition simple (fondu +
@@ -268,6 +347,30 @@
     transform: scale(0.98);
     pointer-events: none;
     transition: opacity var(--dur-med) var(--ease-organic), transform var(--dur-med) var(--ease-organic);
+    overflow: hidden;
+  }
+
+  /* Grand monogramme "M" en filigrane, purement décoratif — le genre de
+     détail qu'on retrouve dans les menus plein écran des sites agence
+     primés (grande typo fantôme en fond). N'intercepte aucun clic et
+     reste toujours DERRIÈRE les liens (z-index négatif + les liens sont
+     en flux normal, donc peints par-dessus). */
+  .nav__mobile::after {
+    content: 'M';
+    position: absolute;
+    right: -0.06em;
+    bottom: -0.18em;
+    z-index: -1;
+
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: min(70vw, 26rem);
+    line-height: 1;
+    color: var(--color-text);
+    opacity: 0.045;
+
+    pointer-events: none;
+    user-select: none;
   }
 
   .nav--open .nav__mobile {
@@ -291,15 +394,24 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    transition: border-color var(--dur-fast) var(--ease-soft),
+                transform var(--dur-fast) var(--ease-organic),
+                background var(--dur-fast) var(--ease-soft);
+  }
+
+  .nav__mobile-close:active {
+    transform: scale(0.9) rotate(90deg);
   }
 
   .nav__mobile-links {
+    position: relative;
+    z-index: 1;
     display: flex;
     flex-direction: column;
-    gap: 0.2rem;
   }
 
   .nav__mobile-link {
+    position: relative;
     display: flex;
     align-items: baseline;
     justify-content: space-between;
@@ -308,7 +420,7 @@
     font-family: var(--font-display);
     font-weight: 700;
     font-size: clamp(2rem, 11vw, 3rem);
-    padding-block: 0.5rem;
+    padding-block: 0.55rem;
     color: var(--color-text);
     opacity: 0;
     transform: translateY(14px);
@@ -318,23 +430,67 @@
       color var(--dur-fast) var(--ease-soft);
   }
 
+  /* Fin séparateur entre chaque lien — structure la liste comme un
+     sommaire éditorial plutôt qu'un simple empilement de boutons. */
+  .nav__mobile-link:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 1px;
+    background: var(--color-line-soft);
+  }
+
   .nav--open .nav__mobile-link {
     opacity: 1;
     transform: translateY(0);
   }
 
   .nav__mobile-link-index {
+    flex: 0 0 auto;
     font-family: var(--font-mono);
     font-size: var(--fs-micro);
-    color: var(--color-accent);
+    color: var(--color-text-faint);
     letter-spacing: 0.06em;
+    transition: color var(--dur-fast) var(--ease-soft);
   }
 
-  .nav__mobile-link.is-active {
-    color: var(--color-primary);
+  @media (hover: hover) and (pointer: fine) {
+    .nav__mobile-link:hover {
+      color: var(--color-primary);
+    }
+
+    .nav__mobile-link:hover .nav__mobile-link-index {
+      color: var(--color-primary);
+    }
+  }
+
+  .nav__mobile-link:active span:first-child {
+    transform: translateX(4px);
+  }
+
+  .nav__mobile-link span:first-child {
+    display: inline-block;
+    transition: transform var(--dur-fast) var(--ease-organic);
+  }
+
+  /* Le lien actif se distingue par un remplissage en dégradé plutôt
+     qu'une simple couleur plate — plus riche visuellement. */
+  .nav__mobile-link.is-active span:first-child {
+    background: linear-gradient(120deg, var(--color-primary), var(--color-secondary));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .nav__mobile-link.is-active .nav__mobile-link-index {
+    color: var(--color-accent);
   }
 
   .nav__mobile-actions {
+    position: relative;
+    z-index: 1;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -351,6 +507,18 @@
   .nav--open .nav__mobile-actions {
     opacity: 1;
     transform: translateY(0);
+  }
+
+  .nav__mobile-lang,
+  .nav__mobile-theme {
+    transition: border-color var(--dur-fast) var(--ease-soft),
+                transform var(--dur-fast) var(--ease-organic),
+                box-shadow var(--dur-fast) var(--ease-soft);
+  }
+
+  .nav__mobile-lang:active,
+  .nav__mobile-theme:active {
+    transform: scale(0.95);
   }
 
   .nav__mobile-lang {

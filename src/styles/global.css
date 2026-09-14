@@ -11,6 +11,17 @@
   box-sizing: border-box;
 }
 
+/* Les navigateurs appliquent par défaut un padding-inline-start
+   (~40px, réservé pour les puces) à <ul>/<ol>, même une fois
+   `list-style: none` posé sur un composant précis. Sans ce reset
+   global, une liste peut sembler "décalée"/mal centrée plutôt que
+   simplement dépourvue de puces. */
+ul,
+ol {
+  margin: 0;
+  padding: 0;
+}
+
 
 html {
   width: 100%;

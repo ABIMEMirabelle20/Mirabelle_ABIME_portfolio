@@ -95,6 +95,11 @@
 /* ---------- Cartes de mise en valeur ---------- */
 .certifications__highlights {
   margin-top: var(--space-xl);
+  /* Même piège que pour .about__facts : un <ul> garde son padding par
+     défaut (~40px à gauche) tant qu'on ne le remet pas à zéro, même
+     avec list-style: none — ce qui décale toute la grille vers la
+     droite au lieu de la centrer. */
+  padding: 0;
   list-style: none;
   display: grid;
   grid-template-columns: 1fr;
