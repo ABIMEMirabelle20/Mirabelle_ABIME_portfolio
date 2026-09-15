@@ -45,7 +45,7 @@ export const translations = {
     skillsSection: {
       eyebrow: 'Compétences',
       title: 'Un arbre qui continue de pousser.',
-      lead: 'Chaque branche représente un domaine, chaque feuille une compétence. Sa taille traduit mon niveau actuel — survolez ou touchez une feuille pour en savoir plus.',
+      lead: 'Chaque branche représente un domaine — du frontend au backend, en passant par les bases de données et les outils — et chaque feuille une compétence. Sa taille traduit mon niveau actuel : survolez ou touchez une feuille pour en savoir plus.',
       overview: 'Vue d’ensemble',
       svgLabel: 'Arbre représentant mes compétences techniques',
       avgLevel: 'Niveau moyen',
@@ -159,7 +159,7 @@ text: 'Une exploration continue des nouvelles technologies web, des tendances fr
     skillsSection: {
       eyebrow: 'Skills',
       title: 'A tree that keeps growing.',
-      lead: 'Each branch is a domain, each leaf a skill. Its size reflects my current level — hover or tap a leaf to learn more.',
+      lead: 'Each branch is a domain — from front-end to back-end, databases and tooling — and each leaf a skill. Its size reflects my current level: hover or tap a leaf to learn more.',
       overview: 'Overview',
       svgLabel: 'Tree representing my technical skills',
       avgLevel: 'Average level',
