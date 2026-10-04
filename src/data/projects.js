@@ -1,12 +1,12 @@
 // tagline/description sont bilingues ({ fr, en }) pour suivre la langue
 // active du site. title, stack et liens restent identiques dans les deux langues.
 
-import smartCalculatorImg from '../assets/projects/smart-calculator.jpg.png';
-import WeatherApp from '../assets/projects/weather.jpg.png';
-import numera from '../assets/projects/numera.jpg.png';
-import niceCréation from '../assets/projects/nice_création.jpg.png';
-import pokedex from '../assets/projects/pokedex.jpg.png';
-import personal_finance from '../assets/projects/personal_finance.jpg.png';
+import smartCalculatorImg from '../assets/projects/smart-calculator.webp';
+import WeatherApp from '../assets/projects/weather.webp';
+import numera from '../assets/projects/numera.webp';
+import niceCreation from '../assets/projects/nice-creation.webp';
+import pokedex from '../assets/projects/pokedex.webp';
+import personalFinance from '../assets/projects/personal-finance.webp';
 
 
 const projects = [
@@ -15,7 +15,7 @@ const projects = [
     title: 'Smart-Calculator',
     tagline: {
       fr: "Plus qu'une calculatrice, un outil intelligent.",
-      en: 'More than a calculator — an intelligent tool.',
+      en: 'More than a calculator: an intelligent tool.',
     },
     description: {
       fr: "Une calculatrice moderne développée avec HTML, CSS et JavaScript. Ce projet va bien au-delà d'une calculatrice classique en proposant une interface élégante, une expérience utilisateur fluide et de nombreuses fonctionnalités avancées.",
@@ -23,7 +23,6 @@ const projects = [
     },
     year: '2025 · 2026',
     stack: ['Html', 'CSS', 'JS'],
-    gradient: ['#2F6BFF', '#00D4FF'],
     image: smartCalculatorImg,
     github: 'https://github.com/ABIMEMirabelle20/Calculatrice_JS.git',
     demo: 'https://abimemirabelle20.github.io/Calculatrice_JS/',
@@ -42,7 +41,6 @@ const projects = [
     },
     year: '2026',
     stack: ['React', 'Three.js', 'React Three Fiber', 'Vite'],
-    gradient: ['#2F6BFF', '#38BDF8'],
     image: WeatherApp,
     github: 'https://github.com/ABIMEMirabelle20/weather_app',
     demo: 'https://weatherapp-indol-nine.vercel.app/',
@@ -50,7 +48,7 @@ const projects = [
 
   {
     id: 'perso-3',
-    title: 'Numera — Jeu de devinette',
+    title: 'Numera : jeu de devinette',
     tagline: {
       fr: 'Plus vous approchez, plus ça chauffe.',
       en: 'The closer you get, the hotter it gets.',
@@ -61,7 +59,6 @@ const projects = [
     },
     year: '2026',
     stack: ['React', 'Vite', 'Web Audio API', 'CSS3'],
-    gradient: ['#00D4FF', '#F5A623'],
     image: numera,
     github: 'https://github.com/ABIMEMirabelle20/number-guess-game',
     demo: 'https://number-guess-game-green-sigma.vercel.app/',
@@ -71,7 +68,7 @@ const projects = [
 
   {
      id: 'perso-4',
-    title: 'Nice Crochet — Site vitrine',
+    title: 'Nice Crochet : site vitrine',
     tagline: {
       fr: 'Chaque maille a son mot à dire.',
       en: 'Every stitch has something to say.',
@@ -81,27 +78,25 @@ const projects = [
       en: 'A showcase site built for a handmade crochet brand, where every collection tells a story: limited-edition pieces, made-to-order commissions tracked step by step, and an online training path designed to pass on the craft, not just sell it.',
     },
     year: '2026',
-    stack: ['React', 'Vite','JS', ' CSS'],
-    gradient: ['#8B3DFF', '#00D4FF'],
-    image: niceCréation,
+    stack: ['React', 'Vite', 'JS', 'CSS'],
+    image: niceCreation,
     github: 'https://github.com/ABIMEMirabelle20/Site_Nice_Crochet.git',
     demo: 'https://site-nice-crochet.vercel.app/',
   },
 
     {
     id: 'perso-5',
-    title: 'Pokédex- Encyclopédie interactive des Pokémon',
+    title: 'Pokédex : encyclopédie interactive des Pokémon',
     tagline: {
       fr: 'Attrapez-les tous… mais commencez par les trouver.',
       en: 'Find them all… but start by finding them.',
     },
     description: {
-      fr: " Une expérience interactive qui transforme l’univers des Pokémon en une exploration dynamique, intuitive et ludique. Les utilisateurs peuvent rechercher des Pokémon par nom,type ou génération,découvrir leurs caractéristiques,évolutions et capacités, et meme interagir avec des animations et des effets visuels qui rendent la navigation captivante.",
+      fr: "Une expérience interactive qui transforme l’univers des Pokémon en une exploration dynamique, intuitive et ludique. Les utilisateurs peuvent rechercher des Pokémon par nom, type ou génération, découvrir leurs caractéristiques, évolutions et capacités, et même interagir avec des animations et des effets visuels qui rendent la navigation captivante.",
       en: 'An interactive experience that transforms the world of Pokémon into a dynamic, intuitive, and fun exploration. Users can search for Pokémon by name, type, or generation, discover their characteristics, evolutions, and abilities, and even interact with animations and visual effects that make navigation captivating.',
     },
     year: '2026',
-    stack: ['React', 'Vite', 'three.JS', ],
-    gradient: ['#00D4FF', '#F5A623'],
+    stack: ['React', 'Vite', 'Three.js'],
     image: pokedex,
     github: 'https://github.com/ABIMEMirabelle20/pokedex_game.git',
     demo: 'https://pokedexgame-alpha.vercel.app/',
@@ -109,19 +104,18 @@ const projects = [
 
    {
     id: 'perso-6',
-    title: 'Personal Finance Manager- Gestionnaire de finances personnelles',
+    title: 'Personal Finance Manager : gestionnaire de finances personnelles',
     tagline: {
-      fr: 'Chaque centime compte,chque dépense a son histoire.',
-      en: 'Every penny counts,every expense has its story.',
+      fr: 'Chaque centime compte, chaque dépense a son histoire.',
+      en: 'Every penny counts, every expense has its story.',
     },
     description: {
-      fr: " Une application de gestion financière personnelle qui permet aux utilisateurs de suivre leurs revenus,dépenses et investissements de manière intuitive et efficace. Les utilisateurs peuvent visualiser leurs finances à travers des graphiques interactifs,définir des budgets, recevoir des alertes de dépenses et obtenir des conseils personnalisés pour améliorer leur santé financière.",
+      fr: "Une application de gestion financière personnelle qui permet aux utilisateurs de suivre leurs revenus, dépenses et investissements de manière intuitive et efficace. Les utilisateurs peuvent visualiser leurs finances à travers des graphiques interactifs, définir des budgets, recevoir des alertes de dépenses et obtenir des conseils personnalisés pour améliorer leur santé financière.",
       en: 'A personal finance management application that allows users to track their income, expenses, and investments in an intuitive and efficient manner. Users can visualize their finances through interactive charts, set budgets, receive expense alerts, and get personalized advice to improve their financial health.',
     },
     year: '2026',
     stack: ['JS', 'Python', 'PostgreSQL','Pandas'],
-    gradient: ['#00D4FF', '#F5A623'],
-    image: personal_finance,
+    image: personalFinance,
     github: 'https://github.com/ABIMEMirabelle20/Personal_finance_manager.git',
     demo: 'https://personal-finance-manager-weld-phi.vercel.app/',
   },

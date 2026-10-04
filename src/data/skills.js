@@ -11,7 +11,7 @@ export const skillBranches = [
     branchEnd: { x: 232, y: 632 },
     control: { x: 330, y: 700 },
     side: 'left',
-    color: 'var(--color-primary)',
+    color: 'var(--viz-1)',
     leaves: [
       {
         id: 'react',
@@ -43,7 +43,7 @@ export const skillBranches = [
     branchEnd: { x: 770, y: 546 },
     control: { x: 660, y: 610 },
     side: 'right',
-    color: 'var(--color-secondary)',
+    color: 'var(--viz-2)',
     leaves: [
       {
         id: 'css',
@@ -75,7 +75,7 @@ export const skillBranches = [
     branchEnd: { x: 214, y: 452 },
     control: { x: 320, y: 520 },
     side: 'left',
-    color: 'var(--color-accent)',
+    color: 'var(--viz-3)',
     leaves: [
       {
         id: 'git',
@@ -107,7 +107,7 @@ export const skillBranches = [
     branchEnd: { x: 762, y: 372 },
     control: { x: 650, y: 436 },
     side: 'right',
-    color: 'var(--color-text-faint)',
+    color: 'var(--viz-4)',
     leaves: [
       {
         id: 'node',

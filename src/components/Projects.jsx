@@ -36,10 +36,7 @@ function ProjectCard({ project, index, t, lang }) {
   const hasDemo = project.demo && project.demo !== '#';
 
   return (
-    <article
-      className="projects__card"
-      style={{ '--card-a': project.gradient[0], '--card-b': project.gradient[1] }}
-    >
+    <article className="projects__card">
       <div className="projects__card-media">
         <div className="projects__card-media-bar">
           <span /><span /><span />
@@ -50,7 +47,7 @@ function ProjectCard({ project, index, t, lang }) {
 
         <div className="projects__card-media-body">
           {project.image ? (
-            <img src={project.image} alt={project.title} loading="lazy" draggable="false" />
+            <img src={project.image} alt={project.title} width="400" height="250" loading="lazy" decoding="async" draggable="false" />
           ) : (
             <span className="projects__card-monogram">{project.title.charAt(0)}</span>
           )}
@@ -278,6 +275,18 @@ export default function Projects() {
     }
   };
 
+  if (count === 0) {
+    return (
+      <section id="projects" className="projects section">
+        <div className="projects__head container">
+          <p className="eyebrow">{t.projectsSection.eyebrow}</p>
+          <h2>{t.projectsSection.title}</h2>
+          <p className="projects__lead">{t.projectsSection.empty}</p>
+        </div>
+      </section>
+    );
+  }
+
   return (
     <section id="projects" className="projects section">
       <div className="projects__head container">
@@ -292,7 +301,7 @@ export default function Projects() {
           className="projects__nav projects__nav--prev"
           onClick={() => goTo(active - 1)}
           disabled={!canPrev}
-          aria-label="Projet précédent"
+          aria-label={t.projectsSection.prev}
         >
           ←
         </button>
@@ -319,7 +328,7 @@ export default function Projects() {
           className="projects__nav projects__nav--next"
           onClick={() => goTo(active + 1)}
           disabled={!canNext}
-          aria-label="Projet suivant"
+          aria-label={t.projectsSection.next}
         >
           →
         </button>
@@ -332,7 +341,7 @@ export default function Projects() {
             type="button"
             className={`projects__dot ${i === active ? 'is-active' : ''}`}
             onClick={() => goTo(i)}
-            aria-label={`Aller au projet ${i + 1}`}
+            aria-label={`${t.projectsSection.goTo} ${i + 1}`}
           />
         ))}
       </div>

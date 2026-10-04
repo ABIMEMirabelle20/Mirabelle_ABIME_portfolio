@@ -12,7 +12,9 @@ import './GlobalScene.css';
  * "zones" 3D isolées plutôt qu'un environnement continu.
  */
 
-const PALETTE = ['#2F6BFF', '#8B3DFF', '#00D4FF'];
+// Une seule teinte d'accent (jaune mirabelle) + un neutre chaud : la scène
+// reste un fond discret, pas un feu d'artifice de couleurs.
+const PALETTE = ['#E5B13A', '#8A8678'];
 
 function Particles({ count, low }) {
   const ref = useRef(null);
@@ -39,9 +41,9 @@ function Particles({ count, low }) {
       </bufferGeometry>
       <pointsMaterial
         size={low ? 0.05 : 0.045}
-        color="#8B3DFF"
+        color="#8A8678"
         transparent
-        opacity={0.55}
+        opacity={0.5}
         sizeAttenuation
         depthWrite={false}
       />
@@ -121,11 +123,11 @@ function SignatureKnot({ low }) {
     <mesh ref={mesh} position={[3.4, -28, -6]} scale={1.3}>
       <torusKnotGeometry args={[0.9, 0.24, low ? 56 : 160, low ? 8 : 20, 2, 3]} />
       {low ? (
-        <meshStandardMaterial color="#2F6BFF" roughness={0.4} metalness={0.2} />
+        <meshStandardMaterial color="#E5B13A" roughness={0.5} metalness={0.1} />
       ) : (
         <meshPhysicalMaterial
-          color="#2F6BFF"
-          roughness={0.15}
+          color="#E5B13A"
+          roughness={0.35}
           transmission={0.3}
           thickness={1.5}
           clearcoat={0.6}
@@ -174,7 +176,7 @@ function Scene({ low, enablePointer }) {
   const shapes = useMemo(() => {
     const list = [];
     const step = 5.2;
-    const count = 14;
+    const count = 8;
     for (let i = 0; i < count; i += 1) {
       const side = i % 2 === 0 ? -1 : 1;
       list.push({
@@ -196,8 +198,8 @@ function Scene({ low, enablePointer }) {
         position: [0, 2 - i * step, -5],
         radius: 3.2 + (i % 2) * 0.6,
         speed: i % 2 === 0 ? 0.05 : -0.045,
-        color: i % 2 === 0 ? '#2F6BFF' : '#00D4FF',
-        opacity: 0.32,
+        color: '#8A8678',
+        opacity: 0.3,
       });
     }
     return list;
@@ -210,7 +212,7 @@ function Scene({ low, enablePointer }) {
     <>
       <ambientLight intensity={0.55} />
       <directionalLight position={[4, 4, 5]} intensity={0.85} color="#FFFFFF" />
-      <pointLight position={[-4, -2, 2]} intensity={0.4} color="#00D4FF" />
+      <pointLight position={[-4, -2, 2]} intensity={0.3} color="#FFFFFF" />
 
       <Particles count={low ? 260 : 620} low={low} />
 

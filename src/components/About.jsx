@@ -18,9 +18,8 @@ export default function About() {
         {/* Le portrait n'est jamais soumis à une animation d'apparition :
             toujours visible immédiatement, sur mobile comme sur desktop. */}
         <div className="about__visual">
-          <span className="about__glow" aria-hidden="true" />
           <div className="about__frame">
-            <img className="about__photo" src={portrait} alt="Mirabelle ABIME" loading="eager" />
+            <img className="about__photo" src={portrait} alt="Mirabelle ABIME" width="343" height="361" loading="eager" decoding="async" />
           </div>
           <span className="about__ring" aria-hidden="true" />
         </div>

@@ -14,8 +14,5 @@
   inset: 0;
   z-index: 0;
   pointer-events: none;
-  background:
-    radial-gradient(60% 40% at 20% 10%, var(--glow-primary), transparent 70%),
-    radial-gradient(50% 40% at 85% 60%, var(--glow-secondary), transparent 70%),
-    var(--color-bg);
+  background: var(--color-bg);
 }

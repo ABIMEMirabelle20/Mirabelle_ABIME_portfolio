@@ -1,6 +1,7 @@
 import { Suspense, lazy, useEffect, useRef, useState } from 'react';
 import { motion } from 'framer-motion';
 import { useLanguage } from '../i18n/LanguageContext';
+import ErrorBoundary from './ErrorBoundary';
 import './Hero.css';
 
 const HeroScene = lazy(() => import('./HeroScene'));
@@ -93,9 +94,11 @@ export default function Hero() {
   return (
     <section id="home" className={`hero ${ready ? 'is-ready' : ''}`}>
       {allowScene && (
-        <Suspense fallback={null}>
-          <HeroScene isMobile={isMobile} />
-        </Suspense>
+        <ErrorBoundary name="hero-scene" silent>
+          <Suspense fallback={null}>
+            <HeroScene isMobile={isMobile} />
+          </Suspense>
+        </ErrorBoundary>
       )}
       <div className="hero__glow" aria-hidden="true" />
 

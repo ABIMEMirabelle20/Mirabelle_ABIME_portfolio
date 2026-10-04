@@ -162,7 +162,7 @@ p {
 
 ::selection {
   background: var(--color-primary);
-  color: var(--color-white);
+  color: var(--color-on-primary);
 }
 
 
@@ -179,10 +179,7 @@ p {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(
-    var(--color-primary),
-    var(--color-secondary)
-  );
+  background: var(--color-line);
 
   border-radius: 10px;
 
@@ -278,20 +275,12 @@ p {
 .reveal {
   opacity: 0;
 
-  transform: translateY(28px);
-
-  transition:
-    opacity var(--dur-slow) var(--ease-organic),
-    transform var(--dur-slow) var(--ease-organic);
-
-  will-change: transform, opacity;
+  transition: opacity var(--dur-med) var(--ease-soft);
 }
 
 
 .reveal.is-visible {
   opacity: 1;
-
-  transform: translateY(0);
 }
 
 
@@ -317,7 +306,7 @@ p {
    ===================================================================== */
 
 :focus-visible {
-  outline: 2px solid var(--color-text);
+  outline: 2px solid var(--color-primary);
   outline-offset: 3px;
 
   border-radius: 2px;

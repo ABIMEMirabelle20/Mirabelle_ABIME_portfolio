@@ -1,8 +1,8 @@
 import { motion } from 'framer-motion';
 
 const variants = {
-  hidden: { opacity: 0, y: 24 },
-  show: { opacity: 1, y: 0 },
+  hidden: { opacity: 0 },
+  show: { opacity: 1 },
 };
 
 // Petit wrapper réutilisé dans toutes les sections pour une apparition au
@@ -17,7 +17,7 @@ export default function Reveal({ as: Tag = 'div', delay = 0, className, children
       initial="hidden"
       whileInView="show"
       viewport={{ once: true, amount: 0.3 }}
-      transition={{ duration: 0.6, delay, ease: [0.22, 1, 0.36, 1] }}
+      transition={{ duration: 0.4, delay: Math.min(delay, 0.1), ease: 'easeOut' }}
       {...rest}
     >
       {children}

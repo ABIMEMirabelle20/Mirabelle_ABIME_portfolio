@@ -61,6 +61,19 @@ export default function Footer() {
 
   return (
     <footer className="footer">
+      {/* Trois nappes d'eau décoratives, de vitesses et de hauteurs
+          différentes. Chacune est un motif de vague répété deux fois qui
+          glisse horizontalement en boucle, sans coupure visible. */}
+      <div className="footer__waves" aria-hidden="true">
+        {[1, 2, 3].map((n) => (
+          <div key={n} className={`footer__wave footer__wave--${n}`}>
+            <svg viewBox="0 0 2400 120" preserveAspectRatio="none" focusable="false">
+              <path d="M0 60 Q300 0 600 60 T1200 60 T1800 60 T2400 60 V120 H0 Z" />
+            </svg>
+          </div>
+        ))}
+      </div>
+
       <div className="container footer__inner">
         <p className="footer__builtby">
           {t.footer.builtBy} <span className="footer__name">Mirabelle ABIME</span>
@@ -74,7 +87,7 @@ export default function Footer() {
 
         <div className="footer__bottom">
           <span className="footer__mark">
-            © {new Date().getFullYear()} Mirabelle ABIME — {t.footer.rights}
+            © {new Date().getFullYear()} Mirabelle ABIME. {t.footer.rights}
           </span>
           <span className="footer__sep" aria-hidden="true">·</span>
           <button

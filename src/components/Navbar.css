@@ -17,9 +17,7 @@
   inset: 0;
   z-index: -1;
 
-  background: color-mix(in srgb, var(--color-bg) 70%, transparent);
-  backdrop-filter: blur(18px) saturate(1.4);
-  -webkit-backdrop-filter: blur(18px) saturate(1.4);
+  background: var(--color-bg);
 
   border-bottom: 1px solid transparent;
 
@@ -48,7 +46,6 @@
   border-radius: 999px;
   background: var(--color-surface);
   border: 1px solid var(--color-line);
-  box-shadow: 0 8px 24px -14px rgba(var(--shadow-color), 0.5);
   transition:
     border-color var(--dur-fast) var(--ease-soft),
     transform var(--dur-fast) var(--ease-organic),
@@ -56,9 +53,7 @@
 }
 
 .nav__mark:hover {
-  border-color: color-mix(in srgb, var(--color-primary) 40%, var(--color-line));
-  box-shadow: 0 10px 26px -12px var(--glow-primary);
-  transform: translateY(-1px);
+  border-color: var(--color-primary);
 }
 
 /* ---------- Logo "M" : monogramme au trait, minimaliste ---------- */
@@ -69,9 +64,6 @@
   transition: transform var(--dur-med) var(--ease-organic);
 }
 
-.nav__mark:hover .nav__mark-logo {
-  transform: rotate(-6deg) scale(1.05);
-}
 
 /* ---------- Prénom / Nom : même poids, bien mis en valeur ---------- */
 .nav__mark-text {
@@ -98,7 +90,6 @@
   border-radius: 999px;
   background: var(--color-surface);
   border: 1px solid var(--color-line);
-  box-shadow: 0 8px 24px -14px rgba(var(--shadow-color), 0.5);
 }
 
 .nav__links {
@@ -161,10 +152,8 @@
 }
 
 .nav__theme:hover {
-  border-color: var(--color-accent);
+  border-color: var(--color-primary);
   color: var(--color-text);
-  box-shadow: 0 0 0 3px var(--glow-accent);
-  transform: rotate(-12deg);
 }
 
 .nav__lang {
@@ -180,7 +169,6 @@
 
 .nav__lang:hover {
   border-color: var(--color-primary);
-  box-shadow: 0 0 0 3px var(--glow-primary);
 }
 
 .nav__lang-indicator {
@@ -190,8 +178,7 @@
   width: calc(50% - 3px);
   height: calc(100% - 6px);
   border-radius: 999px;
-  background: linear-gradient(120deg, var(--color-primary), var(--color-secondary));
-  box-shadow: 0 4px 12px -4px var(--glow-primary);
+  background: var(--color-primary);
   transition: transform var(--dur-med) var(--ease-organic);
 }
 
@@ -281,8 +268,7 @@
     border-radius: 999px;
     background: var(--color-surface);
     border: 1px solid var(--color-line);
-    box-shadow: 0 8px 24px -14px rgba(var(--shadow-color), 0.5);
-    font-family: var(--font-body);
+      font-family: var(--font-body);
     font-size: var(--fs-small);
     font-weight: 600;
     color: var(--color-text);
@@ -340,9 +326,6 @@
     justify-content: center;
     padding: 6rem var(--space-md) var(--space-lg);
     background-color: var(--color-bg);
-    background-image:
-      radial-gradient(65% 55% at 85% 15%, var(--glow-primary), transparent 65%),
-      radial-gradient(55% 45% at 10% 90%, var(--glow-secondary), transparent 65%);
     opacity: 0;
     transform: scale(0.98);
     pointer-events: none;
@@ -478,14 +461,11 @@
   /* Le lien actif se distingue par un remplissage en dégradé plutôt
      qu'une simple couleur plate — plus riche visuellement. */
   .nav__mobile-link.is-active span:first-child {
-    background: linear-gradient(120deg, var(--color-primary), var(--color-secondary));
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
+    color: var(--color-primary);
   }
 
   .nav__mobile-link.is-active .nav__mobile-link-index {
-    color: var(--color-accent);
+    color: var(--color-primary);
   }
 
   .nav__mobile-actions {

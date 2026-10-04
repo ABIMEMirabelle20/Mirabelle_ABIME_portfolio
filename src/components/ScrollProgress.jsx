@@ -44,23 +44,7 @@ export default function ScrollProgress() {
       onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
       aria-label={t.footer.top}
     >
-      <span className="scroll-ring__halo" aria-hidden="true" />
-
       <svg viewBox="0 0 68 68" className="scroll-ring__svg">
-        <defs>
-          <linearGradient
-            id="scroll-ring-gradient"
-            x1="0%"
-            y1="0%"
-            x2="100%"
-            y2="100%"
-          >
-            <stop offset="0%" stopColor="var(--color-primary)" />
-            <stop offset="55%" stopColor="var(--color-secondary)" />
-            <stop offset="100%" stopColor="var(--color-accent)" />
-          </linearGradient>
-        </defs>
-
         <circle
           className="scroll-ring__track"
           cx="34"

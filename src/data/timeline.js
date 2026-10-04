@@ -5,7 +5,7 @@
 const timeline = [
   {
     year: '2024',
-    title: { fr: 'Baccalauréat — mention Assez Bien', en: 'High school diploma — Pass with Merit' },
+    title: { fr: 'Baccalauréat, mention Assez Bien', en: 'High school diploma, Pass with Merit' },
     place: { fr: 'Enseignement secondaire', en: 'Secondary education' },
     description: {
       fr: 'Obtention du baccalauréat, point de départ vers une formation en informatique.',

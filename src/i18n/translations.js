@@ -13,10 +13,10 @@ export const translations = {
     },
     hero: {
       eyebrow: 'DÉVELOPPEUSE FRONT-END • REACT & JAVASCRIPT',
-      greeting: 'Salut, moi c’est Mirabelle 👋',
-      titleLine1: 'Je conçois des',
-      titleAccent: 'interfaces vivantes',
-      titleLine3: 'qui allient précision et sensibilité.',
+      greeting: 'Salut, moi c’est Mirabelle.',
+      titleLine1: 'Je développe des',
+      titleAccent: 'interfaces web',
+      titleLine3: 'avec React et JavaScript.',
       ctaProjects: 'Voir mes projets',
       ctaContact: 'Me contacter',
       
@@ -25,27 +25,31 @@ export const translations = {
       eyebrow: 'À propos',
       title: 'Créer, apprendre, développer.',
       lead:
-        "Je suis Mirabelle ABIME, étudiante en informatique (option Intelligence Artificielle) et développeuse front-end basée au Bénin. Je conçois des interfaces web modernes, performantes et centrées sur l'utilisateur.",
+        "Je suis Mirabelle ABIME, étudiante en informatique (option Intelligence Artificielle) et développeuse front-end basée au Bénin. Je construis des sites et des applications web avec React et JavaScript, du design jusqu'au déploiement.",
       p2: "Mon ambition est de devenir une voix féminine influente dans le secteur de la tech, non seulement en suivant les évolutions du numérique, mais aussi en créant, en partageant mes connaissances et en contribuant activement à son évolution.",
-      p3: "Aujourd'hui, je poursuis cet apprentissage avec l'ambition de devenir une développeuse capable de créer des expériences numériques innovantes, en faisant progressivement converger le développement web et l'intelligence artificielle.",
+      p3: "Aujourd'hui, je continue d'apprendre en construisant des projets, avec l'objectif de relier développement web et intelligence artificielle.",
       facts: [
         { label: 'Basé à', value: 'Cotonou, Bénin' },
-        { label: 'Parcours', value: 'Licence 2 informatique — option IA' },
+        { label: 'Parcours', value: 'Licence 2 informatique, option IA' },
         { label: 'Disponibilité', value: 'Freelance & missions' },
         { label: 'Langues', value: 'Français, Anglais' },
       ],
     },
     projectsSection: {
       eyebrow: 'Projets',
-      title: 'Des idées, mises en forme.',
-      lead: 'Sites vitrines, applications et interfaces conçues et développées avec soin.',
+      title: 'Ce que j’ai construit.',
+      lead: 'Sites et applications, avec le code source et une démo en ligne.',
+      empty: 'Les projets arrivent bientôt.',
+      prev: 'Projet précédent',
+      next: 'Projet suivant',
+      goTo: 'Aller au projet',
       code: 'Code',
       demo: 'Démo live',
     },
     skillsSection: {
       eyebrow: 'Compétences',
       title: 'Un arbre qui continue de pousser.',
-      lead: 'Chaque branche représente un domaine — du frontend au backend, en passant par les bases de données et les outils — et chaque feuille une compétence. Sa taille traduit mon niveau actuel : survolez ou touchez une feuille pour en savoir plus.',
+      lead: 'Chaque branche représente un domaine (du frontend au backend, en passant par les bases de données et les outils) et chaque feuille une compétence. Sa taille traduit mon niveau actuel : survolez ou touchez une feuille pour en savoir plus.',
       overview: 'Vue d’ensemble',
       svgLabel: 'Arbre représentant mes compétences techniques',
       avgLevel: 'Niveau moyen',
@@ -56,7 +60,7 @@ export const translations = {
     timelineSection: {
       eyebrow: 'Parcours',
       title: 'Mon évolution, année après année.',
-      lead: 'Un aperçu de mon évolution, de mes apprentissages et des étapes qui façonnent ma vision du développement web.',
+      lead: 'Les étapes de ma formation et de mon apprentissage du développement web.',
       svgLabel: 'Coupe de tronc représentant mon parcours, année par année',
     },
     certifications: {
@@ -67,23 +71,23 @@ export const translations = {
       yearsLabel: 'années à coder, jour après jour',
       highlights: [
         {
-          title: 'Apprentissage continu',
-          text: 'Une nouvelle certification engagée dès qu’une compétence mérite d’être creusée.',
+          title: 'Apprendre en continu',
+          text: 'Je démarre une nouvelle certification dès qu’une compétence mérite d’être approfondie.',
         },
         {
-          title: 'Pratique par projet',
-          text: 'Chaque notion validée est réinjectée dans un projet concret, pas seulement un certificat.',
+          title: 'Pratiquer sur des projets',
+          text: 'Chaque notion validée est réutilisée dans un vrai projet, pas seulement dans un certificat.',
         },
         {
-         title: 'Innovation & apprentissage',
-text: 'Une exploration continue des nouvelles technologies web, des tendances front-end et des avancées en intelligence artificielle.'
+         title: 'Suivre le front-end et l’IA',
+text: 'Je suis l’évolution des technologies web et de l’intelligence artificielle.'
         },
       ],
     },
     interestsSection: {
       eyebrow: 'En dehors du code',
-      title: 'Ce qui nourrit mon regard.',
-      lead: 'Des passions qui influencent, discrètement, ma manière de concevoir.',
+      title: 'Ce qui m’intéresse hors du code.',
+      lead: 'Les passions qui influencent ma façon de concevoir.',
     },
     contact: {
       eyebrow: 'Contact',
@@ -101,6 +105,10 @@ text: 'Une exploration continue des nouvelles technologies web, des tendances fr
       sending: 'Envoi...',
       sent: 'Message envoyé ✓',
       error: 'Une erreur est survenue, réessaie.',
+      errorTimeout: 'Le serveur met trop de temps à répondre. Réessaie dans un instant ou écris-moi directement par email.',
+      errorOffline: 'Pas de connexion internet. Vérifie ta connexion puis réessaie.',
+      errorCooldown: 'Ton message vient d’être envoyé. Patiente quelques secondes avant d’en envoyer un autre.',
+      errorTooMany: 'Tu as déjà envoyé plusieurs messages. Écris-moi directement par email.',
     },
     footer: {
       tagline: 'DÉVELOPPEUSE FRONT-END • REACT • JAVASCRIPT',
@@ -127,10 +135,10 @@ text: 'Une exploration continue des nouvelles technologies web, des tendances fr
     },
     hero: {
       eyebrow: 'FRONT-END DEVELOPER • REACT & JAVASCRIPT',
-      greeting: 'Hey, I’m Mirabelle 👋',
-      titleLine1: 'I design',
-      titleAccent: 'living interfaces',
-      titleLine3: 'that blend precision with feeling.',
+      greeting: 'Hey, I’m Mirabelle.',
+      titleLine1: 'I build',
+      titleAccent: 'web interfaces',
+      titleLine3: 'with React and JavaScript.',
       ctaProjects: 'View my projects',
       ctaContact: 'Get in touch',
      
@@ -139,27 +147,31 @@ text: 'Une exploration continue des nouvelles technologies web, des tendances fr
       eyebrow: 'About',
       title: 'Create, learn, build.',
       lead:
-        "I'm Mirabelle ABIME, a Computer Science student specializing in Artificial Intelligence and a front-end developer based in Benin. I design modern, high-performance, user-centered web interfaces.",
-      p2: "My ambition is to become an influential female voice in the tech industry—not only by keeping up with technological advancements, but also by creating, sharing my knowledge, and actively contributing to its growth",
-      p3: "Today, I'm pursuing that learning with the ambition of becoming a developer capable of creating innovative digital experiences, gradually bringing web development and artificial intelligence together.",
+        "I'm Mirabelle ABIME, a Computer Science student specializing in Artificial Intelligence and a front-end developer based in Benin. I build websites and web apps with React and JavaScript, from design to deployment.",
+      p2: "My ambition is to become an influential female voice in the tech industry, not only by keeping up with technological advancements, but also by creating, sharing my knowledge, and actively contributing to its growth",
+      p3: "Today, I keep learning by building projects, with the goal of bringing web development and artificial intelligence together.",
       facts: [
         { label: 'Based in', value: 'Cotonou, Benin' },
-        { label: 'Background', value: 'BSc Year 2, Computer Science — AI track' },
+        { label: 'Background', value: 'BSc Year 2, Computer Science, AI track' },
         { label: 'Availability', value: 'Freelance & missions' },
         { label: 'Languages', value: 'French, English' },
       ],
     },
     projectsSection: {
       eyebrow: 'Projects',
-      title: 'Ideas, shaped into form.',
-      lead: 'Showcase sites, apps and interfaces designed and built with care.',
+      title: 'What I have built.',
+      lead: 'Sites and apps, with the source code and a live demo.',
+      empty: 'Projects are coming soon.',
+      prev: 'Previous project',
+      next: 'Next project',
+      goTo: 'Go to project',
       code: 'Code',
       demo: 'Live demo',
     },
     skillsSection: {
       eyebrow: 'Skills',
       title: 'A tree that keeps growing.',
-      lead: 'Each branch is a domain — from front-end to back-end, databases and tooling — and each leaf a skill. Its size reflects my current level: hover or tap a leaf to learn more.',
+      lead: 'Each branch is a domain (from front-end to back-end, databases and tooling) and each leaf a skill. Its size reflects my current level: hover or tap a leaf to learn more.',
       overview: 'Overview',
       svgLabel: 'Tree representing my technical skills',
       avgLevel: 'Average level',
@@ -170,7 +182,7 @@ text: 'Une exploration continue des nouvelles technologies web, des tendances fr
     timelineSection: {
       eyebrow: 'Journey',
       title: 'My evolution, year after year.',
-      lead: 'A look at my growth, my learning and the milestones shaping how I approach web development.',
+      lead: 'The steps of my training and of how I learned web development.',
       svgLabel: 'Tree-ring cross-section representing my journey, year by year',
     },
     certifications: {
@@ -181,23 +193,23 @@ text: 'Une exploration continue des nouvelles technologies web, des tendances fr
       yearsLabel: 'years coding, day after day',
       highlights: [
         {
-          title: 'Continuous learning',
-          text: 'A new certification started as soon as a skill is worth digging into.',
+          title: 'Learning continuously',
+          text: 'I start a new certification as soon as a skill is worth digging into.',
         },
         {
-          title: 'Project-driven practice',
-          text: 'Every validated concept feeds back into a real project, not just a certificate.',
+          title: 'Practicing on projects',
+          text: 'Every validated concept is reused in a real project, not just in a certificate.',
         },
         {
-         title: 'Innovation & Learning',
-text: 'Continuous exploration of new web technologies, front-end trends, and advances in artificial intelligence.'
+         title: 'Following front-end and AI',
+text: 'I keep up with web technologies and with artificial intelligence.'
         },
       ],
     },
     interestsSection: {
       eyebrow: 'Outside of code',
-      title: 'What feeds my perspective.',
-      lead: 'Passions that quietly shape the way I design.',
+      title: 'What interests me outside of code.',
+      lead: 'The interests that shape the way I design.',
     },
     contact: {
       eyebrow: 'Contact',
@@ -215,6 +227,10 @@ text: 'Continuous exploration of new web technologies, front-end trends, and adv
       sending: 'Sending...',
       sent: 'Message sent ✓',
       error: 'Something went wrong, please try again.',
+      errorTimeout: 'The server is taking too long to answer. Try again in a moment or email me directly.',
+      errorOffline: 'No internet connection. Check your connection and try again.',
+      errorCooldown: 'Your message was just sent. Please wait a few seconds before sending another one.',
+      errorTooMany: 'You already sent several messages. Please email me directly.',
     },
     footer: {
       tagline: 'FRONT-END DEVELOPER • REACT • JAVASCRIPT',

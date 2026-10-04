@@ -62,10 +62,10 @@ function StatBlock({ target, label, note, delay }) {
     <motion.div
       className="certifications__stat"
       ref={ref}
-      initial={{ opacity: 0, y: 26 }}
-      whileInView={{ opacity: 1, y: 0 }}
+      initial={{ opacity: 0 }}
+      whileInView={{ opacity: 1 }}
       viewport={{ once: true, amount: 0.5 }}
-      transition={{ duration: 0.6, delay, ease: [0.22, 1, 0.36, 1] }}
+      transition={{ duration: 0.4, ease: 'easeOut' }}
     >
       <span className="certifications__stat-number">{value.toLocaleString('fr-FR')}</span>
       <span className="certifications__stat-label">{label}</span>
@@ -80,8 +80,6 @@ export default function Certifications() {
 
   return (
     <section id="certifications" className="section certifications" ref={ref}>
-      <span className="certifications__glow" aria-hidden="true" />
-
       <div className="container certifications__inner">
         <div className="section-head reveal">
           <p className="eyebrow">{t.certifications.eyebrow}</p>
@@ -103,10 +101,10 @@ export default function Certifications() {
             <motion.li
               key={item.title}
               className="certifications__highlight-card"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
               viewport={{ once: true, amount: 0.4 }}
-              transition={{ duration: 0.5, delay: 0.1 + i * 0.08, ease: [0.22, 1, 0.36, 1] }}
+              transition={{ duration: 0.4, ease: 'easeOut' }}
             >
               <span className="certifications__highlight-index">{String(i + 1).padStart(2, '0')}</span>
               <h3>{item.title}</h3>

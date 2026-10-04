@@ -15,19 +15,10 @@
   border: 1px solid var(--color-line);
   border-radius: 50%;
 
-  background: color-mix(
-    in srgb,
-    var(--color-surface) 82%,
-    transparent
-  );
-
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-
-  box-shadow: 0 14px 34px -16px rgba(0, 0, 0, 0.65);
+  background: var(--color-surface);
 
   opacity: 0;
-  transform: translateY(14px) scale(0.85);
+  transform: none;
 
   /*
    * Important :
@@ -47,7 +38,6 @@
 /* Bouton visible après 120px de scroll */
 .scroll-ring.is-visible {
   opacity: 1;
-  transform: translateY(0) scale(1);
   pointer-events: auto;
 }
 
@@ -55,9 +45,6 @@
 .scroll-ring:hover,
 .scroll-ring:focus-visible {
   border-color: var(--color-primary);
-  box-shadow:
-    0 18px 42px -14px var(--glow-primary);
-  transform: translateY(-3px) scale(1.06);
 }
 
 .scroll-ring:focus-visible {
@@ -85,45 +72,6 @@
   pointer-events: none;
 }
 
-.scroll-ring:hover .scroll-ring__svg,
-.scroll-ring:focus-visible .scroll-ring__svg {
-  transform: rotate(-82deg);
-}
-
-/* Halo */
-.scroll-ring__halo {
-  position: absolute;
-  inset: -10px;
-
-  border-radius: 50%;
-
-  background:
-    radial-gradient(
-      circle,
-      var(--glow-accent),
-      transparent 70%
-    );
-
-  opacity: 0.55;
-
-  animation:
-    scrollRingPulse 3.2s var(--ease-soft) infinite;
-
-  pointer-events: none;
-}
-
-@keyframes scrollRingPulse {
-  0%,
-  100% {
-    transform: scale(0.92);
-    opacity: 0.45;
-  }
-
-  50% {
-    transform: scale(1.08);
-    opacity: 0.7;
-  }
-}
 
 /* Cercle de fond */
 .scroll-ring__track {
@@ -135,12 +83,9 @@
 /* Progression */
 .scroll-ring__value {
   fill: none;
-  stroke: url(#scroll-ring-gradient);
+  stroke: var(--color-primary);
   stroke-width: 3;
   stroke-linecap: round;
-
-  filter:
-    drop-shadow(0 0 6px var(--glow-primary));
 
   transition:
     stroke-dashoffset var(--dur-fast) linear;

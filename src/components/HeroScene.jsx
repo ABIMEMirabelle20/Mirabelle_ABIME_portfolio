@@ -34,7 +34,7 @@ function Particles({ count, color }) {
       <bufferGeometry>
         <bufferAttribute attach="attributes-position" count={count} array={positions} itemSize={3} />
       </bufferGeometry>
-      <pointsMaterial size={0.05} color={color} transparent opacity={0.8} sizeAttenuation depthWrite={false} />
+      <pointsMaterial size={0.05} color={color} transparent opacity={0.6} sizeAttenuation depthWrite={false} />
     </points>
   );
 }
@@ -106,12 +106,11 @@ export default function HeroScene({ isMobile }) {
       <ambientLight intensity={0.7} />
       <directionalLight position={[3, 3, 4]} intensity={0.7} color="#FFFFFF" />
 
-      <Particles count={isMobile ? 260 : 680} color="#8B3DFF" />
-      <Thread radius={3.4} speed={0.055} color="#2F6BFF" opacity={0.45} />
-      {!isMobile && <Thread radius={2.3} speed={-0.04} color="#00D4FF" opacity={0.32} />}
+      <Particles count={isMobile ? 160 : 380} color="#8A8678" />
+      <Thread radius={3.4} speed={0.055} color="#8A8678" opacity={0.4} />
+      
 
-      <FloatingGem position={[2.6, 1.1, -2]} scale={0.42} color="#2F6BFF" speed={0.9} low={isMobile} />
-      {!isMobile && <FloatingGem position={[-2.4, -1.2, -1.5]} scale={0.3} color="#00D4FF" speed={1.2} low={isMobile} />}
+      <FloatingGem position={[2.6, 1.1, -2]} scale={0.42} color="#E5B13A" speed={0.9} low={isMobile} />
     </Canvas>
   );
 }
