@@ -1,0 +1,184 @@
+/* ---------- En-tête ---------- */
+.projects__head { margin-bottom: clamp(2rem, 5vw, 4rem); }
+.projects__head h2 { max-width: none; }
+.projects__head .lead { margin-top: var(--space-sm); color: var(--muted); }
+
+/* Compteur et invitation à glisser : seulement en carrousel (mobile). */
+.projects__controls, .projects__hint { display: none; }
+
+/* ---------- Galerie (ordinateur) : deux colonnes décalées ---------- */
+.gallery {
+  position: relative; /* repère pour mesurer la position des cartes */
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(2.5rem, 5vw, 4.5rem) clamp(1.5rem, 3.5vw, 3rem);
+  align-items: start;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+/* Décalage vertical d'une colonne sur deux : asymétrie, sans hiérarchie. */
+.gallery__item:nth-child(even) { margin-top: clamp(3rem, 7vw, 6.5rem); }
+
+/* ---------- Carte : même largeur pour tous, composition variable ---------- */
+.gp {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid color-mix(in srgb, var(--plum) 16%, transparent);
+  border-radius: 36px;
+}
+[data-theme='dark'] .gp { border-color: color-mix(in srgb, var(--ivory) 18%, transparent); }
+
+/* Zone de l'aperçu : l'interface est le sujet, elle prend la place qu'il faut. */
+.gp__stage { position: relative; padding: clamp(1.25rem, 2.6vw, 2rem) clamp(1.25rem, 2.6vw, 2rem) 0; }
+
+.gp__frame {
+  position: relative;
+  overflow: hidden;
+  border: 2px solid var(--plum);
+  border-radius: 18px;
+  background: var(--ivory);
+  transition: transform 0.6s cubic-bezier(0.34, 1.7, 0.5, 1);
+}
+.gp__placeholder {
+  display: grid;
+  place-items: center;
+  aspect-ratio: 5 / 4;
+  padding: 1.5rem;
+  text-align: center;
+  color: var(--plum);
+  background-color: var(--ivory);
+  background-image: radial-gradient(circle, color-mix(in srgb, var(--plum) 22%, transparent) 1px, transparent 1.6px);
+  background-size: 22px 22px;
+}
+.gp__placeholder span { font-family: var(--font-display); font-size: clamp(2.2rem, 5vw, 3.6rem); line-height: 1; letter-spacing: -0.02em; }
+.gp__frame img { display: block; width: 100%; height: auto; aspect-ratio: 5 / 4; object-fit: cover; object-position: top center; transition: transform 0.8s var(--ease); }
+
+/* Barre de fenêtre : trois points, comme un navigateur. */
+.gp__bar { display: flex; gap: 0.35rem; padding: 0.6rem 0.8rem; border-bottom: 2px solid var(--plum); background: var(--ivory); }
+.gp__bar i { width: 0.6rem; height: 0.6rem; border: 1.5px solid var(--plum); border-radius: 50%; }
+.gp__bar i:first-child { background: var(--lemon); }
+.gp__bar i:nth-child(2) { background: var(--pink); }
+
+.gp__year {
+  position: absolute;
+  right: clamp(2rem, 3.6vw, 2.75rem);
+  bottom: 0.9rem;
+  padding: 0.3rem 0.75rem;
+  border: 1.5px solid var(--plum);
+  border-radius: 999px;
+  background: var(--lemon);
+  color: var(--plum);
+  font-size: 0.74rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  z-index: 2;
+}
+
+/* --- Composition A : fenêtre légèrement inclinée --- */
+.gp--a .gp__frame { transform: rotate(-1.6deg); }
+
+/* --- Composition B : texte au-dessus, aperçu en arche --- */
+.gp--b .gp__stage { padding-top: 0; padding-bottom: clamp(1.25rem, 2.6vw, 2rem); }
+.gp--b .gp__frame { border-radius: 999px 999px 18px 18px; }
+.gp--b .gp__frame img, .gp--b .gp__placeholder { aspect-ratio: 4 / 4.6; }
+.gp--b .gp__year { bottom: clamp(2rem, 3.8vw, 2.9rem); right: auto; left: 50%; transform: translateX(-50%); }
+
+/* --- Composition C : aperçu décalé sur un bloc, texte en volet qui chevauche --- */
+.gp--c .gp__frame { transform: rotate(1.4deg); box-shadow: 14px 14px 0 -2px color-mix(in srgb, var(--plum) 55%, transparent); }
+.gp--c .gp__info {
+  --fg: var(--plum);
+  --muted: color-mix(in srgb, var(--plum) 72%, var(--ivory));
+  --line: color-mix(in srgb, var(--plum) 22%, transparent);
+  --accent: var(--wine);
+  --accent-contrast: var(--ivory);
+  --focus: var(--wine);
+  position: relative;
+  z-index: 1;
+  margin: -2.2rem clamp(0.75rem, 2vw, 1.25rem) clamp(0.75rem, 2vw, 1.25rem);
+  border: 2px solid var(--plum);
+  border-radius: 24px;
+  background: var(--ivory);
+  color: var(--plum);
+}
+
+/* ---------- Texte ---------- */
+.gp__info { display: flex; flex-direction: column; gap: var(--space-sm); padding: clamp(1.4rem, 3vw, 2.25rem); }
+.gp__top { display: flex; align-items: baseline; gap: 0.75rem; }
+.gp__num { font-family: var(--font-display); font-size: clamp(2.6rem, 5vw, 3.6rem); line-height: 0.9; color: transparent; -webkit-text-stroke: 1.5px var(--fg); }
+.gp__kicker { font-size: 0.74rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); }
+.gp__title { font-size: clamp(2.1rem, 3.8vw, 3.2rem); }
+.gp__tagline { font-size: 1.05rem; font-weight: 500; }
+
+.gp__facts { display: grid; margin-top: 0.2rem; }
+.gp__fact { padding-block: 0.65rem; border-top: 1px solid var(--line); }
+.gp__fact dt { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); }
+.gp__fact dd { margin-top: 0.2rem; font-size: 0.95rem; line-height: 1.6; }
+
+.gp__stack { display: flex; flex-wrap: wrap; gap: 0.4rem; padding: 0; list-style: none; }
+.gp__stack li { padding: 0.28rem 0.8rem; border: 1px solid var(--fg); border-radius: 999px; font-size: 0.74rem; font-weight: 600; letter-spacing: 0.03em; }
+.gp__links { display: flex; flex-wrap: wrap; gap: 0.6rem; padding-top: var(--space-xs); }
+.gp__links .btn { min-height: 2.9rem; padding: 0.7rem 1.4rem; font-size: 0.92rem; }
+
+/* ---------- Ordinateur : vie de la galerie ---------- */
+@media (min-width: 821px) {
+  /* Révélation douce, une carte après l'autre. */
+  .projects--armed .gallery__item:not(.is-in) { opacity: 0; transform: translateY(2.5rem); }
+  .projects--armed .gallery__item { transition: opacity 0.9s var(--ease), transform 0.9s var(--ease); }
+}
+@media (hover: hover) and (pointer: fine) {
+  .gp:hover .gp__frame, .gp:focus-within .gp__frame { transform: translateY(-10px) rotate(0deg); }
+  .gp:hover .gp__frame img { transform: scale(1.04); }
+}
+
+/* ---------- Mobile : carrousel horizontal ---------- */
+@media (max-width: 820px) {
+  .projects__controls { display: flex; align-items: center; gap: var(--space-md); }
+  .projects__counter { display: flex; align-items: baseline; font-family: var(--font-display); line-height: 1; white-space: nowrap; }
+  .projects__current { font-size: 2.8rem; animation: projectsCount 0.4s var(--ease); }
+  .projects__total { font-size: 1.15rem; color: var(--muted); }
+  .projects__progress { flex: 1; height: 2px; background: var(--line); }
+  .projects__progress span { display: block; height: 100%; background: var(--accent); transform-origin: left; transition: transform 0.5s var(--ease); }
+
+  .projects__hint { display: block; margin: var(--space-sm) 0 0; font-size: 0.78rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); transition: opacity 0.4s; }
+  .projects__hint span { display: inline-block; animation: projectsNudge 1.4s ease-in-out infinite; }
+  .projects__hint.is-gone { opacity: 0; }
+
+  /* La piste déborde jusqu'aux bords de l'écran ; les cartes restent alignées sur la marge. */
+  .gallery {
+    display: flex;
+    gap: 0.9rem;
+    margin-inline: calc(var(--gutter) * -1);
+    padding: 1.25rem var(--gutter) 2rem;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-snap-type: x mandatory;
+    scroll-padding-inline: var(--gutter);
+    overscroll-behavior-x: contain; /* le geste ne fait pas défiler la page à l'horizontale */
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+  .gallery::-webkit-scrollbar { display: none; }
+  .gallery:focus-visible { outline-offset: -4px; }
+  .gallery__item, .gallery__item:nth-child(even) { flex: 0 0 82vw; max-width: 25rem; margin-top: 0; scroll-snap-align: start; }
+
+  .gp--c .gp__frame { box-shadow: 10px 10px 0 -2px color-mix(in srgb, var(--plum) 55%, transparent); }
+  /* Sur mobile, l'aperçu passe toujours en premier : c'est lui qu'on voit d'abord. */
+  .gp__stage { order: -1; }
+  .gp--b .gp__stage { padding-top: 1.25rem; padding-bottom: 0; }
+  .gp--b .gp__year { bottom: 0.9rem; }
+  .gp__frame img, .gp__placeholder { aspect-ratio: 4 / 3; }
+  .gp--b .gp__frame img, .gp--b .gp__placeholder { aspect-ratio: 4 / 4.2; }
+  .gp__info { padding: 1.25rem 1.25rem 1.5rem; }
+  .gp__links .btn { flex: 1 1 8rem; }
+}
+
+@keyframes projectsCount { from { opacity: 0; transform: translateY(0.35em); } }
+@keyframes projectsNudge { 50% { transform: translateX(6px); } }
+
+@media (prefers-reduced-motion: reduce) {
+  .gp:hover .gp__frame, .gp:focus-within .gp__frame { transform: none; }
+  .gp__frame, .gp__frame img, .projects__progress span { transition: none; }
+  .projects__current, .projects__hint span { animation: none; }
+}
