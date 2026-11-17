@@ -90,7 +90,7 @@ export default function Timeline() {
   const numbers = [
     { value: totalCertifications, label: c.countLabel },
     { value: yearsCoding, label: c.yearsLabel },
-    { value: linesOfCode.toLocaleString(lang === 'fr' ? 'fr-FR' : 'en-GB'), label: c.linesLabel },
+    { value: linesOfCode.toLocaleString(lang === 'fr' ? 'fr-FR' : 'en-GB'), label: c.linesLabel, prefix: '+' },
   ];
 
   return (
@@ -155,28 +155,36 @@ export default function Timeline() {
           })}
         </ol>
 
-        <div className="journey__learning">
-          <p className="eyebrow">{c.eyebrow}</p>
+        <div className="journey__learning band band--wine">
+          <div className="journey__stats">
+            <p className="eyebrow">{c.eyebrow}</p>
+            <dl className="journey__numbers">
+              {numbers.map((n) => (
+                <div key={n.label} className="journey__number">
+                  <dt>{n.label}</dt>
+                  <dd>
+                    {n.prefix && <span className="journey__plus">{n.prefix}</span>}
+                    {n.value}
+                  </dd>
+                </div>
+              ))}
+            </dl>
+          </div>
 
-          <dl className="journey__numbers">
-            {numbers.map((n) => (
-              <div key={n.label} className="journey__number">
-                <dt>{n.label}</dt>
-                <dd>{n.value}</dd>
-              </div>
-            ))}
-          </dl>
-
-          <p className="journey__note">{c.note}</p>
-
-          <ul className="journey__highlights">
-            {c.highlights.map((item) => (
-              <li key={item.title}>
-                <h3>{item.title}</h3>
-                <p>{item.text}</p>
-              </li>
-            ))}
-          </ul>
+          <div className="journey__principles">
+            <p className="journey__note">{c.note}</p>
+            <ol className="journey__highlights">
+              {c.highlights.map((item, index) => (
+                <li key={item.title}>
+                  <span className="journey__badge" aria-hidden="true">{String(index + 1).padStart(2, '0')}</span>
+                  <div>
+                    <h3>{item.title}</h3>
+                    <p>{item.text}</p>
+                  </div>
+                </li>
+              ))}
+            </ol>
+          </div>
         </div>
       </div>
     </section>

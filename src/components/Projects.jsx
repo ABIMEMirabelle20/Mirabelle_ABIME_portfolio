@@ -7,7 +7,8 @@ import './Projects.css';
 // Seule la composition varie (cadre de l'aperçu, place du texte, couleur).
 // Sur mobile (<= 820 px), la galerie devient un carrousel horizontal.
 const CAROUSEL_QUERY = '(max-width: 820px)';
-const VARIANTS = ['a', 'b', 'c', 'b', 'c', 'a'];
+// Composition par défaut si un projet n'a pas de champ "layout".
+const VARIANTS = ['a', 'c'];
 
 const pad = (value) => String(value).padStart(2, '0');
 
@@ -52,7 +53,13 @@ function Stage({ project, variant }) {
           </div>
         )}
         {project.image ? (
-          <img src={project.image} alt="" width="680" height="720" loading="lazy" decoding="async" />
+          <img
+            src={project.image}
+            alt=""
+            loading="lazy"
+            decoding="async"
+            style={project.imagePosition ? { objectPosition: project.imagePosition } : undefined}
+          />
         ) : (
           <div className="gp__placeholder" aria-hidden="true">
             <span>{name}</span>
@@ -222,7 +229,7 @@ export default function Projects() {
                 : {})}
             >
               {projects.map((project, index) => {
-                const variant = VARIANTS[index % VARIANTS.length];
+                const variant = ['a', 'b', 'c'].includes(project.layout) ? project.layout : VARIANTS[index % VARIANTS.length];
                 const infoFirst = variant === 'b';
                 return (
                   <li

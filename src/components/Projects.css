@@ -53,7 +53,7 @@
   background-size: 22px 22px;
 }
 .gp__placeholder span { font-family: var(--font-display); font-size: clamp(2.2rem, 5vw, 3.6rem); line-height: 1; letter-spacing: -0.02em; }
-.gp__frame img { display: block; width: 100%; height: auto; aspect-ratio: 5 / 4; object-fit: cover; object-position: top center; transition: transform 0.8s var(--ease); }
+.gp__frame img { display: block; width: 100%; height: auto; object-fit: cover; object-position: top center; transition: transform 0.8s var(--ease); }
 
 /* Barre de fenêtre : trois points, comme un navigateur. */
 .gp__bar { display: flex; gap: 0.35rem; padding: 0.6rem 0.8rem; border-bottom: 2px solid var(--plum); background: var(--ivory); }
@@ -168,7 +168,7 @@
   .gp__stage { order: -1; }
   .gp--b .gp__stage { padding-top: 1.25rem; padding-bottom: 0; }
   .gp--b .gp__year { bottom: 0.9rem; }
-  .gp__frame img, .gp__placeholder { aspect-ratio: 4 / 3; }
+  .gp__placeholder { aspect-ratio: 4 / 3; }
   .gp--b .gp__frame img, .gp--b .gp__placeholder { aspect-ratio: 4 / 4.2; }
   .gp__info { padding: 1.25rem 1.25rem 1.5rem; }
   .gp__links .btn { flex: 1 1 8rem; }

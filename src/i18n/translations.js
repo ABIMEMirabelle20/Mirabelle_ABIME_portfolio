@@ -32,7 +32,7 @@ export const translations = {
       steps: [
         'Salut, je suis Mirabelle. Enfin, sa version dessinée !',
         'Je suis en licence d’informatique, option intelligence artificielle. J’ai des bases en développement front-end avec React et JavaScript.',
-        'Je ne suis pas une experte, et c’est justement le sujet : ici, je montre ce que je construis et ce que j’apprends, projet après projet.',
+        'Ce portfolio présente mes projets, les technologies que j’utilise et celles que j’explore, avec transparence sur mon niveau actuel.',
       ],
       choices: [
         { id: 'projects', label: 'Voir les projets' },
@@ -87,8 +87,8 @@ export const translations = {
           label: 'Côté IA',
           items: [
             'Licence 2 informatique, option IA, à l’IFRI',
-            'Python et Pandas dans Personal Finance Manager',
-            'TensorFlow.js dans AgriTech Bénin, un projet du hackathon IndabaX Bénin',
+            'Python et Pandas pour manipuler des données',
+            'TensorFlow.js : de l’IA qui s’exécute dans le navigateur',
             'Objectif : explorer plusieurs branches de l’IA',
           ],
         },
@@ -239,7 +239,7 @@ export const translations = {
       steps: [
         'Hi, I’m Mirabelle. Well, the drawn version of her!',
         'I’m doing a computer science degree with an artificial intelligence track. I have a foundation in front-end development with React and JavaScript.',
-        'I’m not an expert, and that’s the whole point: here I show what I build and what I learn, project after project.',
+        'This portfolio presents my projects, the technologies I use and the ones I am exploring, with transparency about my current level.',
       ],
       choices: [
         { id: 'projects', label: 'See the projects' },
@@ -294,8 +294,8 @@ export const translations = {
           label: 'AI side',
           items: [
             'BSc Year 2 in computer science, AI track, at IFRI',
-            'Python and Pandas in Personal Finance Manager',
-            'TensorFlow.js in AgriTech Bénin, an IndabaX Bénin hackathon project',
+            'Python and Pandas to work with data',
+            'TensorFlow.js: AI that runs in the browser',
             'Goal: explore several branches of AI',
           ],
         },

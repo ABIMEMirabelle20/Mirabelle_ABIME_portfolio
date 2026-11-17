@@ -13,7 +13,7 @@ export default function Hero() {
   const [hookBuild, hookLearn, hookExplore] = t.hero.hook;
 
   const stamps = [
-    { value: projects.filter((project) => project.demo).length, label: t.hero.stats.projects, tone: 'pink' },
+    { value: projects.length, label: t.hero.stats.projects, tone: 'pink' },
     { value: totalCertifications, label: t.hero.stats.certifications, tone: 'lemon' },
     { value: yearsCoding, label: t.hero.stats.years, tone: 'ivory' },
   ];

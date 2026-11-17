@@ -11,9 +11,11 @@ import Contact from './components/Contact';
 import Footer from './components/Footer';
 import ScrollProgress from './components/ScrollProgress';
 import { useLanguage } from './i18n/LanguageContext';
+import useScrollReveal from './hooks/useScrollReveal';
 
 export default function App() {
   const { t } = useLanguage();
+  useScrollReveal();
   // L'intro ne se joue qu'une fois par visite, jamais en mouvement réduit.
   const [introDone, setIntroDone] = useState(() => !shouldPlayIntro());
 
